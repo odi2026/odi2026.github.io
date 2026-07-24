@@ -20,7 +20,7 @@ topics:
 
 tracks_note: "This workshop is *non-archival* and follows a double-blind review process. Outstanding submissions will be invited for a 15-minute oral presentation. All accepted papers will be presented during the poster session."
 
-openreview_url: "https://openreview.net"
+openreview_url: "https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/ODI&referrer=%5BHomepage%5D(%2F)#tab-your-consoles"
 openreview_label: "Submit on OpenReview"
 submission_deadline: "August 29, 2026, AoE"
 notification_date: "September 29, 2026, AoE"

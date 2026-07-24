@@ -1,6 +1,6 @@
 ---
 title: "Call for Papers"
-openreview_url: "https://openreview.net"
+openreview_url: "https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/ODI&referrer=%5BHomepage%5D(%2F)#tab-your-consoles"
 openreview_label: "Submit on OpenReview"
 
 conflict_note: "Conflicts of interest are managed through OpenReview. Conflicted submissions — including those from organizers' institutions — are assigned to conflict-free reviewers. Organizers will not submit papers to the workshop."
