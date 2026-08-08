@@ -107,6 +107,8 @@ section a { color: var(--link); }
 .cfp-box h3 { font-family: 'IBM Plex Serif', serif; font-size: 1.15rem; font-weight: 600; margin-bottom: .8rem; color: var(--text); }
 .cfp-box ul { padding-left: 1.3rem; color: var(--muted); font-size: 14.5px; margin-bottom: 1.5rem; }
 .cfp-box ul li + li { margin-top: .3rem; }
+.cfp-box.submission-format { background: var(--bg); margin: 1.5rem 0 2rem; }
+.cfp-box.submission-format ul { margin-bottom: 0; }
 .cfp-note { margin-top: 1rem; font-size: 13px; color: var(--light); }
 
 /* DATES */
@@ -277,6 +279,14 @@ function renderTopics(fm) {
       <div class="topic-body"><h4>${e(t.title)}</h4><p>${e(t.description)}</p></div>
     </li>`);
   const intro = fm.intro ? `<p style="margin-bottom:1rem;">${marked.parseInline(fm.intro)}</p>` : '';
+  const submissionFormatItems = (fm.submission_format||[])
+    .map(item => `<li>${marked.parseInline(item)}</li>`)
+    .join('');
+  const submissionFormat = submissionFormatItems ? `
+    <div class="cfp-box submission-format">
+      <h3>${e(fm.submission_format_title || 'Submission Format')}</h3>
+      <ul>${submissionFormatItems}</ul>
+    </div>` : '';
   const tracks = (fm.tracks||[]).map(t => `<li>${marked.parseInline(t)}</li>`).join('');
   const tracksNote = fm.tracks_note ? `<p style="margin-top:.75rem;font-size:14px;color:var(--muted);">${marked.parseInline(fm.tracks_note)}</p>` : '';
   const deadlines = (fm.submission_deadline || fm.notification_date) ? `
@@ -291,6 +301,7 @@ function renderTopics(fm) {
   <div class="section-inner">
     <h2>${e(fm.title)}</h2>
     ${intro}
+    ${submissionFormat}
     <ul style="padding-left:1.3rem;color:var(--muted);font-size:14.5px;margin-bottom:.5rem;">${tracks}</ul>
     ${tracksNote}
     <ul class="topics-list" style="margin-top:2rem;">${items.join('')}</ul>
