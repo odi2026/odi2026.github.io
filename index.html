@@ -109,6 +109,8 @@ section a { color: var(--link); }
 .cfp-box ul li + li { margin-top: .3rem; }
 .cfp-box.submission-format { background: var(--bg); margin: 1.5rem 0 2rem; }
 .cfp-box.submission-format ul { margin-bottom: 0; }
+.cfp-box.reviewer-call { background: var(--bg); padding: 1.5rem 2rem; }
+.cfp-box.reviewer-call p { font-size: 14.5px; margin-bottom: .75rem; }
 .cfp-note { margin-top: 1rem; font-size: 13px; color: var(--light); }
 
 /* DATES */
@@ -189,6 +191,9 @@ function renderHero(fm) {
     ? `<div class="hero-logo"><img src="${e(fm.logo)}" alt="Workshop logo"></div>`
     : '';
   const bgStyle = fm.background ? ` style="background-image:url('${e(fm.background)}');"` : '';
+  const reviewerCta = fm.cta_reviewer_url
+    ? `<a href="${e(fm.cta_reviewer_url)}" class="btn btn-outline" target="_blank" rel="noopener">${e(fm.cta_reviewer_text || 'Volunteer as a Reviewer')}</a>`
+    : '';
   return `
 <div id="hero"${bgStyle}>
   <div class="hero-inner">
@@ -204,6 +209,7 @@ function renderHero(fm) {
     </div>
     <div class="hero-links">
       <a href="${e(fm.cta_primary_url)}" class="btn btn-primary" target="_blank" rel="noopener">${e(fm.cta_primary_text)}</a>
+      ${reviewerCta}
       <a href="${e(fm.cta_secondary_url)}" class="btn btn-outline">${e(fm.cta_secondary_text)}</a>
     </div>
   </div>
@@ -296,6 +302,13 @@ function renderTopics(fm) {
     </div>` : '';
   const conflictNote = fm.conflict_note ? `<p style="margin-top:1rem;font-size:13px;color:var(--light);">${e(fm.conflict_note)}</p>` : '';
   const submitBtn = fm.openreview_url ? `<div style="margin-top:1.5rem;"><a href="${e(fm.openreview_url)}" class="btn btn-primary" target="_blank" rel="noopener">${e(fm.openreview_label)}</a></div>` : '';
+  const reviewerCall = fm.reviewer_url ? `
+    <div class="cfp-box reviewer-call">
+      <h3>${e(fm.reviewer_call_title || 'Call for Reviewers')}</h3>
+      ${fm.reviewer_call_text ? `<p>${e(fm.reviewer_call_text)}</p>` : ''}
+      ${fm.review_period ? `<p><strong>Review period:</strong> ${e(fm.review_period)}</p>` : ''}
+      <a href="${e(fm.reviewer_url)}" class="btn btn-outline" target="_blank" rel="noopener">${e(fm.reviewer_label || 'Volunteer as a Reviewer')}</a>
+    </div>` : '';
   return `
 <section id="topics">
   <div class="section-inner">
@@ -307,6 +320,7 @@ function renderTopics(fm) {
     <ul class="topics-list" style="margin-top:2rem;">${items.join('')}</ul>
     ${deadlines}
     ${submitBtn}
+    ${reviewerCall}
     ${conflictNote}
   </div>
 </section>`;
