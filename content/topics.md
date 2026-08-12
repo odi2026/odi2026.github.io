@@ -33,4 +33,10 @@ openreview_url: "https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/ODI&re
 openreview_label: "Submit on OpenReview"
 submission_deadline: "August 29, 2026, AoE"
 notification_date: "September 29, 2026, AoE"
+
+reviewer_call_title: "Call for Reviewers"
+reviewer_call_text: "We are recruiting reviewers with relevant expertise in the workshop topics. If you would like to contribute to ODI 2026 as a reviewer, please complete the reviewer interest form."
+review_period: "August 29–September 19, 2026"
+reviewer_url: "https://forms.gle/nuLgvrNMzYcTRPKy6"
+reviewer_label: "Volunteer as a Reviewer"
 ---
