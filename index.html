@@ -295,6 +295,11 @@ function renderTopics(fm) {
     </div>` : '';
   const tracks = (fm.tracks||[]).map(t => `<li>${marked.parseInline(t)}</li>`).join('');
   const tracksNote = fm.tracks_note ? `<p style="margin-top:.75rem;font-size:14px;color:var(--muted);">${marked.parseInline(fm.tracks_note)}</p>` : '';
+  const attendancePolicy = fm.attendance_policy ? `
+    <div class="cfp-box">
+      <h3>${e(fm.attendance_policy_title || 'In-Person Attendance')}</h3>
+      <p>${e(fm.attendance_policy)}</p>
+    </div>` : '';
   const deadlines = (fm.submission_deadline || fm.notification_date) ? `
     <div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:.5rem 2rem;font-size:14px;color:var(--muted);">
       ${fm.submission_deadline ? `<span><strong style="color:var(--text);">Submission deadline:</strong> ${e(fm.submission_deadline)}</span>` : ''}
@@ -317,6 +322,7 @@ function renderTopics(fm) {
     ${submissionFormat}
     <ul style="padding-left:1.3rem;color:var(--muted);font-size:14.5px;margin-bottom:.5rem;">${tracks}</ul>
     ${tracksNote}
+    ${attendancePolicy}
     <ul class="topics-list" style="margin-top:2rem;">${items.join('')}</ul>
     ${deadlines}
     ${submitBtn}

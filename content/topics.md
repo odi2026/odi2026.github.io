@@ -29,6 +29,9 @@ topics:
 
 tracks_note: "This workshop is *non-archival* and follows a double-blind review process. Outstanding submissions will be invited for a 15-minute oral presentation. All accepted papers will be presented during the poster session."
 
+attendance_policy_title: "In-Person Attendance"
+attendance_policy: "ODI 2026 is an in-person workshop. We expect at least one author of each accepted paper to attend the workshop in Sydney and present the work in person, barring unexpected circumstances. Authors facing unexpected circumstances should contact the organizing team as soon as possible. Any exception, including a remote presentation, is subject to NeurIPS 2026 rules and the workshop's technical capacity and cannot be guaranteed."
+
 openreview_url: "https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/ODI&referrer=%5BHomepage%5D(%2F)#tab-your-consoles"
 openreview_label: "Submit on OpenReview"
 submission_deadline: "August 29, 2026, AoE"

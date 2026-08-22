@@ -23,3 +23,7 @@ We have two tracks:
 - **Proposals track** — forward-looking ideas without finalized experiments, or interdisciplinary concepts applied to on-device intelligence.
 
 Both tracks are **non-archival** and may be submitted elsewhere. The review process is double-blind. An outstanding submission will receive a **best paper award** and a 15-minute oral presentation. All accepted papers are presented in one of two dedicated poster sessions.
+
+### In-Person Attendance
+
+ODI 2026 is an in-person workshop. We expect at least one author of each accepted paper to attend the workshop in Sydney and present the work in person, barring unexpected circumstances. Authors facing unexpected circumstances should contact the organizing team as soon as possible. Any exception, including a remote presentation, is subject to NeurIPS 2026 rules and the workshop's technical capacity and cannot be guaranteed.
