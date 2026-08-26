@@ -112,6 +112,10 @@ section a { color: var(--link); }
 .cfp-box.reviewer-call { background: var(--bg); padding: 1.5rem 2rem; }
 .cfp-box.reviewer-call p { font-size: 14.5px; margin-bottom: .75rem; }
 .cfp-note { margin-top: 1rem; font-size: 13px; color: var(--light); }
+.deadline-update { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: .3rem .55rem; }
+.deadline-old { color: var(--light); text-decoration-thickness: 1.5px; }
+.deadline-new { color: var(--accent); font-weight: 600; }
+.deadline-status { display: inline-block; padding: .1rem .5rem; border-radius: 100px; background: var(--accent-light); color: var(--accent); font-size: 10.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; }
 
 /* DATES */
 table.dates-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 14.5px; }
@@ -123,6 +127,10 @@ table.dates-table td:last-child { font-size: 13.5px; color: var(--accent); text-
 table.dates-table tr.hl { background: #fffbec; }
 table.dates-table tr.hl td:first-child { font-weight: 600; color: #6b4800; }
 table.dates-table tr.hl td:last-child { color: #6b4800; font-weight: 600; }
+table.dates-table tr.extended { background: var(--accent-light); }
+table.dates-table tr.extended td:first-child { color: var(--accent); font-weight: 600; }
+.date-update { display: inline-flex; flex-direction: column; align-items: flex-end; gap: .2rem; }
+.date-update .deadline-status { margin-top: .05rem; }
 
 /* FOOTER */
 footer { background: #1a1a1a; color: #999; padding: 2.5rem 1.5rem; text-align: center; font-size: 13.5px; }
@@ -170,7 +178,7 @@ function parseMd(raw) {
 }
 
 async function load(file) {
-  const r = await fetch('content/' + file + '?v=20260721-schedule', { cache: 'no-store' });
+  const r = await fetch('content/' + file + '?v=20260826-deadline-extension', { cache: 'no-store' });
   if (!r.ok) throw new Error('Cannot load ' + file);
   return parseMd(await r.text());
 }
@@ -300,9 +308,16 @@ function renderTopics(fm) {
       <h3>${e(fm.attendance_policy_title || 'In-Person Attendance')}</h3>
       <p>${e(fm.attendance_policy)}</p>
     </div>` : '';
+  const submissionDeadline = fm.submission_deadline ? `
+    <span class="deadline-update">
+      <strong style="color:var(--text);">Submission deadline:</strong>
+      ${fm.submission_deadline_previous ? `<del class="deadline-old">${e(fm.submission_deadline_previous)}</del>` : ''}
+      <span class="deadline-new">${e(fm.submission_deadline)}</span>
+      ${fm.submission_deadline_status ? `<span class="deadline-status">${e(fm.submission_deadline_status)}</span>` : ''}
+    </span>` : '';
   const deadlines = (fm.submission_deadline || fm.notification_date) ? `
     <div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:.5rem 2rem;font-size:14px;color:var(--muted);">
-      ${fm.submission_deadline ? `<span><strong style="color:var(--text);">Submission deadline:</strong> ${e(fm.submission_deadline)}</span>` : ''}
+      ${submissionDeadline}
       ${fm.notification_date ? `<span><strong style="color:var(--text);">Notification:</strong> ${e(fm.notification_date)}</span>` : ''}
     </div>` : '';
   const conflictNote = fm.conflict_note ? `<p style="margin-top:1rem;font-size:13px;color:var(--light);">${e(fm.conflict_note)}</p>` : '';
@@ -358,8 +373,15 @@ function renderSubmit(fm, body) {
 
 function renderDates(fm) {
   const rows = (fm.dates||[]).map(d => {
-    const hl = d.highlight ? ' class="hl"' : '';
-    return `<tr${hl}><td>${e(d.label)}</td><td>${e(d.date)}</td></tr>`;
+    const classes = [d.highlight ? 'hl' : '', d.extended ? 'extended' : ''].filter(Boolean).join(' ');
+    const rowClass = classes ? ` class="${classes}"` : '';
+    const date = d.previous_date ? `
+      <span class="date-update">
+        <del class="deadline-old">${e(d.previous_date)}</del>
+        <span class="deadline-new">${e(d.date)}</span>
+        ${d.status ? `<span class="deadline-status">${e(d.status)}</span>` : ''}
+      </span>` : e(d.date);
+    return `<tr${rowClass}><td>${e(d.label)}</td><td>${date}</td></tr>`;
   });
   const note = fm.note ? `<p style="font-size:13.5px;color:var(--light);">${e(fm.note)}</p>` : '';
   return `
