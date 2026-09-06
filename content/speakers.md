@@ -28,7 +28,7 @@ speakers:
 
   - name: "Dan Alistarh"
     affiliation: "ISTA, Efficient Machine Learning Systems"
-    photo: "assets/speakers/dan_alistarh.jpg"
+    photo: "assets/speakers/dan_alistarh_360.jpg"
     bio: |
       Dan Alistarh is a Professor at the Institute of Science and Technology Austria (ISTA). His research focuses on efficient machine learning systems, including model compression, quantization, pruning, and distributed training. He is known for foundational work on sparse and quantized neural networks that enable deployment under tight resource constraints.
 ---

@@ -6,13 +6,13 @@ organizers:
     initials: "NH"
     role: "ETH Zurich"
     url: "https://scholar.google.com/citations?user=iNcA81MAAAAJ"
-    photo: "assets/organizers/niao_he.jpg"
+    photo: "assets/organizers/niao_he_360.jpg"
 
   - name: "Bingcong Li"
     initials: "BL"
     role: "ETH Zurich"
     url: "https://bingcongli.github.io/"
-    photo: "assets/organizers/bingcong_li.png"
+    photo: "assets/organizers/bingcong_li_360.jpg"
 
   - name: "Shiwei Liu"
     initials: "SL"
@@ -30,7 +30,7 @@ organizers:
     initials: "MM"
     role: "MPI for Intelligent Systems"
     url: "https://sites.google.com/view/mmuehlebach/"
-    photo: "assets/organizers/michael_muehlebach.png"
+    photo: "assets/organizers/michael_muehlebach_360.jpg"
 
   - name: "Daniela Rus"
     initials: "DR"
@@ -42,11 +42,11 @@ organizers:
     initials: "MZ"
     role: "MPI for Intelligent Systems"
     url: "https://markozaric.com/"
-    photo: "assets/organizers/marko_zaric.jpg"
+    photo: "assets/organizers/marko_zaric_360.jpg"
 
   - name: "Melanie Zeilinger"
     initials: "MZ"
     role: "ETH Zurich"
     url: "https://scholar.google.com/citations?user=BSf9OLAAAAAJ&hl=en"
-    photo: "assets/organizers/melanie_zeilinger.jpg"
+    photo: "assets/organizers/melanie_zeilinger_360.jpg"
 ---
