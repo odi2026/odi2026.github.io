@@ -24,7 +24,7 @@ body { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 16px; lin
 nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: 0 1.5rem; }
 .nav-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; height: 52px; overflow-x: auto; -ms-overflow-style: none; scrollbar-width: none; }
 .nav-inner::-webkit-scrollbar { display: none; }
-nav a { font-size: 13.5px; font-weight: 500; color: var(--muted); text-decoration: none; white-space: nowrap; padding: 0 1rem; height: 52px; display: flex; align-items: center; border-bottom: 2px solid transparent; transition: color .15s, border-color .15s; }
+nav a { font-size: 13.5px; font-weight: 500; color: var(--muted); text-decoration: none; white-space: nowrap; padding: 0 .75rem; height: 52px; display: flex; align-items: center; border-bottom: 2px solid transparent; transition: color .15s, border-color .15s; }
 nav a:first-child { padding-left: 0; }
 nav a:hover { color: var(--accent); }
 nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
@@ -60,7 +60,7 @@ section strong { color: var(--text); }
 section em { font-style: italic; }
 section a { color: var(--link); }
 #about, #speakers, #submit, #organizers, #contact { background: var(--bg); }
-#schedule, #topics, #dates { background: var(--bg2); }
+#schedule, #topics, #dates, #sponsors { background: var(--bg2); }
 
 /* SCHEDULE */
 .schedule-list { max-width: 720px; margin-top: .5rem; }
@@ -129,8 +129,22 @@ table.dates-table tr.hl td:first-child { font-weight: 600; color: #6b4800; }
 table.dates-table tr.hl td:last-child { color: #6b4800; font-weight: 600; }
 table.dates-table tr.extended { background: var(--accent-light); }
 table.dates-table tr.extended td:first-child { color: var(--accent); font-weight: 600; }
+table.dates-table tr.closed td { color: var(--muted); }
+table.dates-table tr.closed .deadline-old { color: var(--muted); }
+table.dates-table tr.closed .deadline-status { background: #e9e9e5; color: var(--muted); }
 .date-update { display: inline-flex; flex-direction: column; align-items: flex-end; gap: .2rem; }
 .date-update .deadline-status { margin-top: .05rem; }
+
+/* SPONSORS */
+.sponsors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 2rem; }
+.sponsor-card { padding: 2rem; text-align: center; background: var(--bg); border: 1px solid var(--border); border-top: 3px solid #b18a32; border-radius: 8px; }
+.sponsor-tier { color: #8a6000; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1.5rem; }
+.sponsor-logo { display: block; width: 300px; max-width: 100%; margin: 0 auto 1.5rem; }
+.sponsor-logo img { display: block; width: 100%; height: auto; }
+.sponsor-logo:hover { opacity: .8; }
+.sponsor-logo:focus-visible { outline: 2px solid var(--accent); outline-offset: 8px; }
+.sponsor-description { max-width: 560px; margin: 0 auto 1rem; font-size: 15px; line-height: 1.65; }
+.sponsor-link { font-size: 14px; font-weight: 500; text-underline-offset: 3px; }
 
 /* FOOTER */
 footer { background: #1a1a1a; color: #999; padding: 2.5rem 1.5rem; text-align: center; font-size: 13.5px; }
@@ -178,7 +192,7 @@ function parseMd(raw) {
 }
 
 async function load(file) {
-  const r = await fetch('content/' + file + '?v=20260826-deadline-extension', { cache: 'no-store' });
+  const r = await fetch('content/' + file + '?v=20260906-sponsors', { cache: 'no-store' });
   if (!r.ok) throw new Error('Cannot load ' + file);
   return parseMd(await r.text());
 }
@@ -373,15 +387,20 @@ function renderSubmit(fm, body) {
 
 function renderDates(fm) {
   const rows = (fm.dates||[]).map(d => {
-    const classes = [d.highlight ? 'hl' : '', d.extended ? 'extended' : ''].filter(Boolean).join(' ');
+    const classes = [d.highlight ? 'hl' : '', d.closed ? 'closed' : d.extended ? 'extended' : ''].filter(Boolean).join(' ');
     const rowClass = classes ? ` class="${classes}"` : '';
-    const date = d.previous_date ? `
+    const label = d.closed ? `<s>${e(d.label)}</s>` : e(d.label);
+    const date = d.closed ? `
+      <span class="date-update">
+        <s class="deadline-old">${e(d.date)}</s>
+        <span class="deadline-status">${e(d.status || 'Closed')}</span>
+      </span>` : d.previous_date ? `
       <span class="date-update">
         <del class="deadline-old">${e(d.previous_date)}</del>
         <span class="deadline-new">${e(d.date)}</span>
         ${d.status ? `<span class="deadline-status">${e(d.status)}</span>` : ''}
       </span>` : e(d.date);
-    return `<tr${rowClass}><td>${e(d.label)}</td><td>${date}</td></tr>`;
+    return `<tr${rowClass}><td>${label}</td><td>${date}</td></tr>`;
   });
   const note = fm.note ? `<p style="font-size:13.5px;color:var(--light);">${e(fm.note)}</p>` : '';
   return `
@@ -416,6 +435,25 @@ function renderOrganizers(fm) {
     <h2>${e(fm.title)}</h2>
     <div class="speakers-grid">${cards.join('')}</div>
     ${note}
+  </div>
+</section>`;
+}
+
+function renderSponsors(fm) {
+  const cards = (fm.sponsors||[]).map(s => `
+    <article class="sponsor-card" aria-label="${e(s.name)}">
+      <h3 class="sponsor-tier">${e(s.tier)}</h3>
+      <a class="sponsor-logo" href="${e(s.url)}" target="_blank" rel="noopener">
+        <img src="${e(s.logo)}" alt="${e(s.name)}" width="${e(s.logo_width)}" height="${e(s.logo_height)}" loading="lazy">
+      </a>
+      <p class="sponsor-description">${e(s.description)}</p>
+      <a class="sponsor-link" href="${e(s.url)}" target="_blank" rel="noopener">${e(s.website_label || s.name)}</a>
+    </article>`);
+  return `
+<section id="sponsors">
+  <div class="section-inner">
+    <h2>${e(fm.title || 'Sponsors')}</h2>
+    <div class="sponsors-grid">${cards.join('')}</div>
   </div>
 </section>`;
 }
@@ -480,12 +518,13 @@ async function main() {
     ['schedule.md',   null],
     ['dates.md',      null],
     ['organizers.md', null],
+    ['sponsors.md',   null],
     ['contact.md',    null],
   ];
 
   const loaded = await Promise.all(files.map(([f]) => load(f)));
 
-  const [hero, about, topics, speakers, schedule, dates, organizers, contact] = loaded;
+  const [hero, about, topics, speakers, schedule, dates, organizers, sponsors, contact] = loaded;
 
   // Build nav
   const logoHtml = (hero.fm.nav_logo || hero.fm.logo)
@@ -498,6 +537,7 @@ async function main() {
     <a href="#schedule">Schedule</a>
     <a href="#dates">Important Dates</a>
     <a href="#organizers">Organizers</a>
+    <a href="#sponsors">Sponsors</a>
     <a href="#contact">Contact</a>`;
 
   // Build page
@@ -509,6 +549,7 @@ async function main() {
     renderSchedule(schedule.fm),
     renderDates(dates.fm),
     renderOrganizers(organizers.fm),
+    renderSponsors(sponsors.fm),
     renderContact(contact.fm, contact.body),
   ].join('');
 

@@ -16,6 +16,7 @@ All editable content lives in the `content/` folder. Each file is a Markdown fil
 | `content/submit.md` | Call for papers text + evaluation criteria |
 | `content/dates.md` | Important deadline table |
 | `content/organizers.md` | Organizer cards |
+| `content/sponsors.md` | Sponsor tiers, logos, website links, and descriptions |
 | `content/contact.md` | Contact information |
 
 ### Adding a confirmed speaker

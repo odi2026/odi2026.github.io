@@ -6,8 +6,8 @@ dates:
   - label: "Paper submission deadline"
     previous_date: "August 29, 2026, 23:59 AoE"
     date: "September 5, 2026, 23:59 AoE"
-    status: "Extended"
-    extended: true
+    status: "Closed"
+    closed: true
   - label: "Review period"
     date: "Sep 6 – Sep 19, 2026"
   - label: "Author notifications"
