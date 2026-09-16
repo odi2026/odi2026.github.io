@@ -38,10 +38,4 @@ submission_deadline_previous: "August 29, 2026, AoE"
 submission_deadline: "September 5, 2026, 23:59 AoE"
 submission_deadline_status: "Extended"
 notification_date: "September 29, 2026, AoE"
-
-reviewer_call_title: "Call for Reviewers"
-reviewer_call_text: "We are recruiting reviewers with relevant expertise in the workshop topics. If you would like to contribute to ODI 2026 as a reviewer, please complete the reviewer interest form."
-review_period: "September 6–19, 2026"
-reviewer_url: "https://forms.gle/nuLgvrNMzYcTRPKy6"
-reviewer_label: "Volunteer as a Reviewer"
 ---

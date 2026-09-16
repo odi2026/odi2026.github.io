@@ -1,6 +1,6 @@
 ---
 title: "Important Dates"
-note: "All deadlines are 23:59 Anywhere on Earth (AoE)."
+note: "All deadlines are 23:59 Anywhere on Earth (AoE). Workshop times are in AEDT (Sydney local time)."
 
 dates:
   - label: "Paper submission deadline"
@@ -13,6 +13,6 @@ dates:
   - label: "Author notifications"
     date: "September 29, 2026, 23:59 AoE"
   - label: "Workshop day"
-    date: "December 11/12 2026"
+    date: "December 12, 2026"
     highlight: true
 ---

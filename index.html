@@ -39,6 +39,7 @@ nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
 .hero-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem 1.4rem; margin-top: 2rem; font-size: 15px; color: var(--muted); }
 .hero-meta strong { color: var(--text); font-weight: 500; }
 .hero-meta-sep { color: var(--border); }
+.hero-location { display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem 1rem; margin-top: .5rem; font-size: 15px; color: var(--text); }
 .hero-links { margin-top: 2rem; display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; gap: .4rem; font-size: 14px; font-weight: 500; padding: .6rem 1.4rem; border-radius: 5px; text-decoration: none; transition: all .15s; cursor: pointer; font-family: 'IBM Plex Sans', sans-serif; border: 1.5px solid transparent; }
 .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
@@ -76,6 +77,7 @@ section a { color: var(--link); }
 
 /* SPEAKERS / ORGANIZERS */
 .speakers-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap: 2rem; margin-top: .5rem; }
+#speakers .speakers-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
 .speaker-card { text-align: center; }
 .speaker-photo { width: 108px; height: 108px; border-radius: 50%; background: var(--bg2); border: 2px solid var(--border); margin: 0 auto .85rem; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Serif', serif; font-size: 1.5rem; font-style: italic; color: var(--accent); overflow: hidden; }
 .speaker-photo img { width: 100%; height: 100%; object-fit: cover; }
@@ -161,8 +163,13 @@ footer a:hover { color: #fff; }
 .loader-dot:nth-child(3) { animation-delay: .4s; }
 @keyframes bounce { from { transform: translateY(0); opacity:.4; } to { transform: translateY(-10px); opacity:1; } }
 
+@media (min-width: 900px) {
+  #speakers .speakers-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }
+}
+
 @media (max-width: 640px) {
   #hero { background-position: 44% 92%; }
+  .hero-meta-sep { display: none; }
   .schedule-cols { grid-template-columns: 1fr; }
   .sched-time { min-width: 84px; font-size: 11.5px; }
   .speakers-grid { grid-template-columns: repeat(2,1fr); }
@@ -192,7 +199,7 @@ function parseMd(raw) {
 }
 
 async function load(file) {
-  const r = await fetch('content/' + file + '?v=20260906-sponsors', { cache: 'no-store' });
+  const r = await fetch('content/' + file + '?v=20260916-event-details', { cache: 'no-store' });
   if (!r.ok) throw new Error('Cannot load ' + file);
   return parseMd(await r.text());
 }
@@ -226,8 +233,11 @@ function renderHero(fm) {
       <span><strong>${e(fm.badge)}</strong></span>
       <span class="hero-meta-sep">·</span>
       <span><strong>${e(fm.date)}</strong></span>
-      <span class="hero-meta-sep">·</span>
-      <span><strong>${e(fm.venue)}</strong></span>
+      ${fm.time ? `<span class="hero-meta-sep">·</span><span><strong>${e(fm.time)}</strong></span>` : ''}
+    </div>
+    <div class="hero-location">
+      ${fm.room ? `<span>Room ${e(fm.room)}</span><span class="hero-meta-sep">·</span>` : ''}
+      <span>${e(fm.venue)}</span>
     </div>
     <div class="hero-links">
       <a href="${e(fm.cta_primary_url)}" class="btn btn-primary" target="_blank" rel="noopener">${e(fm.cta_primary_text)}</a>

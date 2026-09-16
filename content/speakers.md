@@ -25,10 +25,4 @@ speakers:
     photo: "assets/speakers/ted_xiao.jpg"
     bio: |
       Ted Xiao is a Research Scientist at Google DeepMind working on robotics and vision-language-action models. His research focuses on building general-purpose robotic systems that can understand and execute complex tasks in the real world, leveraging large pretrained models for embodied intelligence.
-
-  - name: "Dan Alistarh"
-    affiliation: "ISTA, Efficient Machine Learning Systems"
-    photo: "assets/speakers/dan_alistarh_360.jpg"
-    bio: |
-      Dan Alistarh is a Professor at the Institute of Science and Technology Austria (ISTA). His research focuses on efficient machine learning systems, including model compression, quantization, pruning, and distributed training. He is known for foundational work on sparse and quantized neural networks that enable deployment under tight resource constraints.
 ---
