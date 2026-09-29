@@ -25,4 +25,18 @@ speakers:
     photo: "assets/speakers/ted_xiao.jpg"
     bio: |
       Ted Xiao is a Research Scientist at Google DeepMind working on robotics and vision-language-action models. His research focuses on building general-purpose robotic systems that can understand and execute complex tasks in the real world, leveraging large pretrained models for embodied intelligence.
+
+  - name: "Pavlo Molchanov"
+    affiliation: "NVIDIA"
+    url: "https://research.nvidia.com/person/pavlo-molchanov"
+    photo: "assets/speakers/pavlo_molchanov.jpg"
+    bio: |
+      Pavlo Molchanov works at NVIDIA Research on efficient language and vision-language models. His research spans model architectures, compression, and adaptive inference.
+
+  - name: "Tianyi Chen"
+    affiliation: "Cornell Tech & Cornell University"
+    url: "https://chen.tech.cornell.edu/"
+    photo: "assets/speakers/tianyi_chen.jpg"
+    bio: |
+      Tianyi Chen is an Associate Professor of Electrical and Computer Engineering at Cornell Tech and Cornell University. His research develops optimization methods for machine learning, with applications to generative AI and distributed and analog computing.
 ---

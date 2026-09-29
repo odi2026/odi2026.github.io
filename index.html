@@ -22,7 +22,7 @@ body { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 16px; lin
 
 /* NAV */
 nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: 0 1.5rem; }
-.nav-inner { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; height: 52px; overflow-x: auto; -ms-overflow-style: none; scrollbar-width: none; }
+.nav-inner { max-width: 1040px; margin: 0 auto; display: flex; align-items: center; height: 52px; overflow-x: auto; -ms-overflow-style: none; scrollbar-width: none; }
 .nav-inner::-webkit-scrollbar { display: none; }
 nav a { font-size: 13.5px; font-weight: 500; color: var(--muted); text-decoration: none; white-space: nowrap; padding: 0 .75rem; height: 52px; display: flex; align-items: center; border-bottom: 2px solid transparent; transition: color .15s, border-color .15s; }
 nav a:first-child { padding-left: 0; }
@@ -48,7 +48,7 @@ nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
 .btn-outline:hover { background: var(--accent-light); }
 
 /* SECTIONS */
-section { padding: 4.5rem 1.5rem; border-bottom: 1px solid var(--border); }
+section { padding: 4.5rem 1.5rem; border-bottom: 1px solid var(--border); scroll-margin-top: 52px; }
 section:last-of-type { border-bottom: none; }
 .section-inner { max-width: var(--max); margin: 0 auto; }
 section h2 { font-family: 'IBM Plex Serif', serif; font-size: 1.7rem; font-weight: 600; color: var(--text); margin-bottom: 1.5rem; }
@@ -60,7 +60,7 @@ section li { margin-bottom: .3rem; }
 section strong { color: var(--text); }
 section em { font-style: italic; }
 section a { color: var(--link); }
-#about, #speakers, #submit, #organizers, #contact { background: var(--bg); }
+#about, #speakers, #panel, #submit, #organizers, #contact { background: var(--bg); }
 #schedule, #topics, #dates, #sponsors { background: var(--bg2); }
 
 /* SCHEDULE */
@@ -77,7 +77,7 @@ section a { color: var(--link); }
 
 /* SPEAKERS / ORGANIZERS */
 .speakers-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap: 2rem; margin-top: .5rem; }
-#speakers .speakers-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+#speakers .speakers-grid, #panel .speakers-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
 .speaker-card { text-align: center; }
 .speaker-photo { width: 108px; height: 108px; border-radius: 50%; background: var(--bg2); border: 2px solid var(--border); margin: 0 auto .85rem; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Serif', serif; font-size: 1.5rem; font-style: italic; color: var(--accent); overflow: hidden; }
 .speaker-photo img { width: 100%; height: 100%; object-fit: cover; }
@@ -92,8 +92,8 @@ section a { color: var(--link); }
 .bio-toggle { display: inline-block; margin-top: .6rem; font-size: 12px; font-weight: 500; color: var(--accent); background: none; border: 1px solid var(--accent); border-radius: 100px; padding: .2rem .75rem; cursor: pointer; font-family: 'IBM Plex Sans', sans-serif; transition: background .15s, color .15s; }
 .bio-toggle:hover { background: var(--accent-light); }
 .bio-toggle.open { background: var(--accent); color: #fff; }
-.bio-panel { margin-top: .75rem; text-align: left; overflow: hidden; max-height: 0; transition: max-height .35s ease, opacity .3s ease; opacity: 0; }
-.bio-panel.visible { max-height: 300px; opacity: 1; }
+.bio-panel { margin-top: .75rem; text-align: left; transition: opacity .3s ease; opacity: 0; }
+.bio-panel.visible { opacity: 1; }
 .speaker-bio { font-size: 13px; color: var(--muted); line-height: 1.6; margin: 0; padding: .75rem; background: var(--bg2); border-radius: 6px; border-left: 2px solid var(--accent); }
 
 /* TOPICS */
@@ -164,7 +164,7 @@ footer a:hover { color: #fff; }
 @keyframes bounce { from { transform: translateY(0); opacity:.4; } to { transform: translateY(-10px); opacity:1; } }
 
 @media (min-width: 900px) {
-  #speakers .speakers-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }
+  #speakers .speakers-grid, #panel .speakers-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
 }
 
 @media (max-width: 640px) {
@@ -199,7 +199,7 @@ function parseMd(raw) {
 }
 
 async function load(file) {
-  const r = await fetch('content/' + file + '?v=20260916-event-details', { cache: 'no-store' });
+  const r = await fetch('content/' + file + '?v=20260929-panel-amini', { cache: 'no-store' });
   if (!r.ok) throw new Error('Cannot load ' + file);
   return parseMd(await r.text());
 }
@@ -277,8 +277,8 @@ function renderSchedule(fm) {
 </section>`;
 }
 
-function renderSpeakers(fm) {
-  const cards = (fm.speakers||[]).map(s => {
+function renderSpeakerCards(people) {
+  return people.map(s => {
     if (s.tba) return `
       <div class="speaker-card">
         <div class="speaker-photo"><span style="color:var(--light);font-style:normal;font-size:1.1rem;">TBA</span></div>
@@ -300,12 +300,30 @@ function renderSpeakers(fm) {
         <div class="speaker-affil">${e(s.affiliation)}</div>
         ${bioHtml}
       </div>`;
-  });
+  }).join('');
+}
+
+function renderSpeakers(fm) {
   return `
 <section id="speakers">
   <div class="section-inner">
     <h2>${e(fm.title)}</h2>
-    <div class="speakers-grid">${cards.join('')}</div>
+    <div class="speakers-grid">${renderSpeakerCards(fm.speakers || [])}</div>
+  </div>
+</section>`;
+}
+
+function renderPanel(fm) {
+  const cards = renderSpeakerCards(fm.panelists || []);
+  const description = fm.description ? `<p class="section-lead">${e(fm.description)}</p>` : '';
+  return `
+<section id="panel">
+  <div class="section-inner">
+    <h2>${e(fm.title)}</h2>
+    ${description}
+    ${cards
+      ? `<div class="speakers-grid">${cards}</div>`
+      : `<p class="section-lead">${e(fm.placeholder || 'Panelists will be announced soon.')}</p>`}
   </div>
 </section>`;
 }
@@ -525,6 +543,7 @@ async function main() {
     ['about.md',      null],
     ['topics.md',     null],
     ['speakers.md',   null],
+    ['panel.md',      null],
     ['schedule.md',   null],
     ['dates.md',      null],
     ['organizers.md', null],
@@ -534,7 +553,7 @@ async function main() {
 
   const loaded = await Promise.all(files.map(([f]) => load(f)));
 
-  const [hero, about, topics, speakers, schedule, dates, organizers, sponsors, contact] = loaded;
+  const [hero, about, topics, speakers, panel, schedule, dates, organizers, sponsors, contact] = loaded;
 
   // Build nav
   const logoHtml = (hero.fm.nav_logo || hero.fm.logo)
@@ -544,6 +563,7 @@ async function main() {
     <a href="#about">About</a>
     <a href="#topics">Topics & CFP</a>
     <a href="#speakers">Keynote Speakers</a>
+    <a href="#panel">Panel Discussion</a>
     <a href="#schedule">Schedule</a>
     <a href="#dates">Important Dates</a>
     <a href="#organizers">Organizers</a>
@@ -556,6 +576,7 @@ async function main() {
     renderAbout(about.fm, about.body),
     renderTopics(topics.fm),
     renderSpeakers(speakers.fm),
+    renderPanel(panel.fm),
     renderSchedule(schedule.fm),
     renderDates(dates.fm),
     renderOrganizers(organizers.fm),
@@ -580,6 +601,13 @@ async function main() {
   const loader = document.getElementById('loading');
   loader.classList.add('done');
   setTimeout(() => loader.remove(), 500);
+
+  // Restore section links after content and fonts have settled the layout.
+  const target = document.getElementById(window.location.hash.slice(1));
+  if (target) {
+    await document.fonts.ready;
+    target.scrollIntoView({ behavior: 'instant' });
+  }
 }
 
 main().catch(err => {
