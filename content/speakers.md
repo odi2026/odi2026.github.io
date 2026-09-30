@@ -38,5 +38,5 @@ speakers:
     url: "https://chen.tech.cornell.edu/"
     photo: "assets/speakers/tianyi_chen.jpg"
     bio: |
-      Tianyi Chen is an Associate Professor of Electrical and Computer Engineering at Cornell Tech and Cornell University. His research develops optimization methods for machine learning, with applications to generative AI and distributed and analog computing.
+      Tianyi Chen is an Associate Professor of Electrical and Computer Engineering at Cornell University. His research develops algorithmic foundations for energy-efficient analog on-device training and inference.
 ---
