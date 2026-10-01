@@ -82,6 +82,7 @@ section a { color: var(--link); }
 .speaker-photo { width: 108px; height: 108px; border-radius: 50%; background: var(--bg2); border: 2px solid var(--border); margin: 0 auto .85rem; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Serif', serif; font-size: 1.5rem; font-style: italic; color: var(--accent); overflow: hidden; }
 .speaker-photo img { width: 100%; height: 100%; object-fit: cover; }
 .speaker-name { font-weight: 600; font-size: 15px; margin-bottom: .25rem; }
+.speaker-role { font-size: 12px; font-weight: 600; color: var(--accent); margin-bottom: .3rem; }
 .speaker-affil { font-size: 13px; color: var(--muted); line-height: 1.4; }
 
 /* BIO TOGGLE */
@@ -164,7 +165,8 @@ footer a:hover { color: #fff; }
 @keyframes bounce { from { transform: translateY(0); opacity:.4; } to { transform: translateY(-10px); opacity:1; } }
 
 @media (min-width: 900px) {
-  #speakers .speakers-grid, #panel .speakers-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  #speakers .speakers-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  #panel .speakers-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }
 }
 
 @media (max-width: 640px) {
@@ -199,7 +201,7 @@ function parseMd(raw) {
 }
 
 async function load(file) {
-  const r = await fetch('content/' + file + '?v=20260930-tianyi-bio', { cache: 'no-store' });
+  const r = await fetch('content/' + file + '?v=20261001-panel-aishwarya-yima', { cache: 'no-store' });
   if (!r.ok) throw new Error('Cannot load ' + file);
   return parseMd(await r.text());
 }
@@ -297,6 +299,7 @@ function renderSpeakerCards(people) {
       <div class="speaker-card">
         <div class="speaker-photo">${photo}</div>
         <div class="speaker-name">${nameHtml}</div>
+        ${s.role ? `<div class="speaker-role">${e(s.role)}</div>` : ''}
         <div class="speaker-affil">${e(s.affiliation)}</div>
         ${bioHtml}
       </div>`;
