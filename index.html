@@ -201,7 +201,7 @@ function parseMd(raw) {
 }
 
 async function load(file) {
-  const r = await fetch('content/' + file + '?v=20261001-panel-aishwarya-yima', { cache: 'no-store' });
+  const r = await fetch('content/' + file + '?v=20261009-program-dates-v5', { cache: 'no-store' });
   if (!r.ok) throw new Error('Cannot load ' + file);
   return parseMd(await r.text());
 }
@@ -418,13 +418,15 @@ function renderSubmit(fm, body) {
 
 function renderDates(fm) {
   const rows = (fm.dates||[]).map(d => {
-    const classes = [d.highlight ? 'hl' : '', d.closed ? 'closed' : d.extended ? 'extended' : ''].filter(Boolean).join(' ');
+    const isPast = d.closed || d.past;
+    const status = d.status || (d.closed ? 'Closed' : '');
+    const classes = [d.highlight ? 'hl' : '', isPast ? 'closed' : d.extended ? 'extended' : ''].filter(Boolean).join(' ');
     const rowClass = classes ? ` class="${classes}"` : '';
-    const label = d.closed ? `<s>${e(d.label)}</s>` : e(d.label);
-    const date = d.closed ? `
+    const label = isPast ? `<s>${e(d.label)}</s>` : e(d.label);
+    const date = isPast ? `
       <span class="date-update">
         <s class="deadline-old">${e(d.date)}</s>
-        <span class="deadline-status">${e(d.status || 'Closed')}</span>
+        ${status ? `<span class="deadline-status">${e(status)}</span>` : ''}
       </span>` : d.previous_date ? `
       <span class="date-update">
         <del class="deadline-old">${e(d.previous_date)}</del>

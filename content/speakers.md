@@ -20,12 +20,6 @@ speakers:
     bio: |
       Aishwarya Kamath is a Research Scientist at Google, where she works on the Gemma project. Her research interests include multimodal understanding, vision-language models, and efficient model design for on-device deployment. She has contributed to several advances in grounded language understanding and open-weight foundation models.
 
-  - name: "Ted Xiao"
-    affiliation: "Google DeepMind, Robotics & Vision-Language-Action Models"
-    photo: "assets/speakers/ted_xiao.jpg"
-    bio: |
-      Ted Xiao is a Research Scientist at Google DeepMind working on robotics and vision-language-action models. His research focuses on building general-purpose robotic systems that can understand and execute complex tasks in the real world, leveraging large pretrained models for embodied intelligence.
-
   - name: "Pavlo Molchanov"
     affiliation: "NVIDIA"
     url: "https://research.nvidia.com/person/pavlo-molchanov"
