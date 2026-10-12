@@ -70,10 +70,13 @@ section a { color: var(--link); }
 .sched-row { display: flex; gap: 1rem; align-items: flex-start; padding: .6rem 0; border-bottom: 1px solid #f0f0ec; font-size: 14px; }
 .sched-row:last-child { border-bottom: none; }
 .sched-time { min-width: 110px; color: var(--light); font-size: 12.5px; flex-shrink: 0; padding-top: 2px; }
+.sched-content { flex: 1; min-width: 0; }
 .sched-label { color: var(--text); }
 .sched-label.highlight { color: var(--accent); font-weight: 500; }
 .sched-label.soft { color: var(--muted); font-style: italic; }
 .sched-label.gold { color: #8a6000; font-weight: 500; }
+.sched-title { margin-top: .2rem; color: var(--text); font-weight: 500; line-height: 1.5; overflow-wrap: anywhere; }
+.sched-speaker { margin-top: .25rem; color: var(--muted); font-size: 13px; }
 
 /* SPEAKERS / ORGANIZERS */
 .speakers-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap: 2rem; margin-top: .5rem; }
@@ -201,7 +204,7 @@ function parseMd(raw) {
 }
 
 async function load(file) {
-  const r = await fetch('content/' + file + '?v=20261009-program-dates-v5', { cache: 'no-store' });
+  const r = await fetch('content/' + file + '?v=20261012-oral-presenters-v1', { cache: 'no-store' });
   if (!r.ok) throw new Error('Cannot load ' + file);
   return parseMd(await r.text());
 }
@@ -263,7 +266,9 @@ function renderAbout(fm, body) {
 function renderSchedule(fm) {
   const row = item => {
     const cls = item.type ? ` ${item.type}` : '';
-    return `<div class="sched-row"><span class="sched-time">${e(item.time)}</span><span class="sched-label${cls}">${e(item.label)}</span></div>`;
+    const title = item.title ? `<div class="sched-title">${e(item.title)}</div>` : '';
+    const speaker = item.speaker ? `<div class="sched-speaker">Presenter: ${e(item.speaker)}</div>` : '';
+    return `<div class="sched-row"><span class="sched-time">${e(item.time)}</span><div class="sched-content"><span class="sched-label${cls}">${e(item.label)}</span>${title}${speaker}</div></div>`;
   };
   const items = [...(fm.morning||[]), ...(fm.afternoon||[])];
   const description = fm.description ? `<p class="section-lead">${e(fm.description)}</p>` : '';
