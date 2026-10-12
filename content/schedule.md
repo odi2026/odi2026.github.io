@@ -57,7 +57,9 @@ afternoon:
     title: "Benchmarking Human-Video-Prompted Robot Adaptation under Deployment Scene Constraints"
     speaker: "Xunzhe Zhou"
   - time: "16:30 – 16:45"
-    label: "Oral Presentation 4 (TBC)"
+    label: "Oral Presentation 4"
+    title: "LoopSpec: Pipelined Self-Speculative Decoding for Looped Transformers"
+    speaker: "Langqing Cui"
   - time: "16:45 – 16:50"
     label: "Closing Remarks"
 ---
