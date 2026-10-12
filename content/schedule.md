@@ -16,6 +16,11 @@ morning:
     speaker: "Aditya Tadimeti"
   - time: "08:35 – 09:10"
     label: "Invited Talk: Tianyi Chen"
+    title: "Learning with Imperfect Physics: Rethinking Optimization for Analog On-Device AI"
+    abstract: |
+      On-device intelligence demands efficient learning and inference under stringent energy, latency, and computational constraints. Analog computing offers a promising path toward low-energy AI by harnessing physical processes to perform computation directly. However, inherent physical imperfections challenge the fundamental assumptions underlying conventional learning algorithms.
+
+      In this talk, I will explore how optimization bridges the gap between mathematical learning algorithms and imperfect physical devices. I will show how nonlinear and asymmetric device dynamics fundamentally alter learning, and how principled optimization algorithms can overcome these limitations. I will also discuss how algorithm–hardware co-design enables scalable analog training of Transformer models. Together, these results point toward a broader vision: co-designing learning algorithms and physical computing substrates to enable efficient, reliable, and adaptive on-device intelligence.
     type: highlight
   - time: "09:10 – 09:25"
     label: "Coffee Break"

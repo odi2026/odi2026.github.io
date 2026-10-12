@@ -77,6 +77,15 @@ section a { color: var(--link); }
 .sched-label.gold { color: #8a6000; font-weight: 500; }
 .sched-title { margin-top: .2rem; color: var(--text); font-weight: 500; line-height: 1.5; overflow-wrap: anywhere; }
 .sched-speaker { margin-top: .25rem; color: var(--muted); font-size: 13px; }
+.talk-abstract { margin-top: .55rem; }
+.talk-abstract summary { width: fit-content; color: var(--accent); font-size: 12px; font-weight: 500; cursor: pointer; border: 1px solid var(--accent); border-radius: 100px; padding: .2rem .75rem; }
+.talk-abstract summary:hover { background: var(--accent-light); }
+.talk-abstract summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.talk-abstract[open] summary { background: var(--accent-light); }
+.talk-abstract .abstract-hide, .talk-abstract[open] .abstract-read { display: none; }
+.talk-abstract[open] .abstract-hide { display: inline; }
+.talk-abstract-copy { margin-top: .75rem; padding: 1rem; background: var(--bg); border-left: 2px solid var(--accent); border-radius: 6px; }
+.talk-abstract-copy p { font-size: 14px; line-height: 1.75; overflow-wrap: anywhere; }
 
 /* SPEAKERS / ORGANIZERS */
 .speakers-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap: 2rem; margin-top: .5rem; }
@@ -208,7 +217,7 @@ function parseMd(raw) {
 }
 
 async function load(file) {
-  const r = await fetch('content/' + file + '?v=20261012-yanchao-panel-v2', { cache: 'no-store' });
+  const r = await fetch('content/' + file + '?v=20261012-tianyi-talk-v1', { cache: 'no-store' });
   if (!r.ok) throw new Error('Cannot load ' + file);
   return parseMd(await r.text());
 }
@@ -272,7 +281,8 @@ function renderSchedule(fm) {
     const cls = item.type ? ` ${item.type}` : '';
     const title = item.title ? `<div class="sched-title">${e(item.title)}</div>` : '';
     const speaker = item.speaker ? `<div class="sched-speaker">Presenter: ${e(item.speaker)}</div>` : '';
-    return `<div class="sched-row"><span class="sched-time">${e(item.time)}</span><div class="sched-content"><span class="sched-label${cls}">${e(item.label)}</span>${title}${speaker}</div></div>`;
+    const abstract = item.abstract ? `<details class="talk-abstract"><summary><span class="abstract-read">Read abstract</span><span class="abstract-hide">Hide abstract</span></summary><div class="talk-abstract-copy">${item.abstract.trim().split(/\n\s*\n/).map(p => `<p>${e(p.trim())}</p>`).join('')}</div></details>` : '';
+    return `<div class="sched-row"><span class="sched-time">${e(item.time)}</span><div class="sched-content"><span class="sched-label${cls}">${e(item.label)}</span>${title}${speaker}${abstract}</div></div>`;
   };
   const items = [...(fm.morning||[]), ...(fm.afternoon||[])];
   const description = fm.description ? `<p class="section-lead">${e(fm.description)}</p>` : '';
