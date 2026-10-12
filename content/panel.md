@@ -35,4 +35,12 @@ panelists:
     photo: "assets/speakers/aishwarya_kamath.jpeg"
     bio: |
       Aishwarya Kamath is a Research Scientist at Google, where she works on the Gemma project. Her research interests include multimodal understanding, vision-language models, and efficient model design for on-device deployment. She has contributed to several advances in grounded language understanding and open-weight foundation models.
+
+  - name: "Yanchao Yang"
+    role: "Panelist"
+    affiliation: "TranscEngram · The University of Hong Kong"
+    url: "https://yanchaoyang.github.io/"
+    photo: "assets/speakers/yanchao_yang.jpg"
+    bio: |
+      Yanchao Yang is an Assistant Professor at the University of Hong Kong, jointly appointed by the Department of Electrical and Computer Engineering and the HKU Musketeers Foundation Institute of Data Science. His research spans embodied AI, computer vision, representation learning, and robotics. He joins the ODI 2026 panel as a representative of TranscEngram.
 ---
