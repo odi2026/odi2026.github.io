@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="With thanks to the urgent reviewers, reviewers, and area chairs who contributed to ODI 2026, the NeurIPS Workshop on On-Device Intelligence.">
+<title>Acknowledgments · ODI 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Serif:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --text: #1a1a1a; --muted: #555; --bg: #fff; --bg2: #f7f7f5;
+  --accent: #1a6b5a; --accent-light: #e8f4f1; --border: #e0e0da; --max: 860px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.75; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.skip-link { position: absolute; left: 1rem; top: -100px; z-index: 100; padding: .5rem 1rem; background: white; }
+.skip-link:focus { top: .5rem; }
+nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: 0 1.5rem; }
+.nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; height: 52px; overflow-x: auto; scrollbar-width: none; }
+.nav-inner::-webkit-scrollbar { display: none; }
+nav a { font-size: 13.5px; font-weight: 500; color: var(--muted); text-decoration: none; white-space: nowrap; padding: 0 .75rem; height: 52px; display: flex; align-items: center; border-bottom: 2px solid transparent; }
+nav a:first-child { padding-left: 0; }
+nav a:hover, nav a[aria-current="page"] { color: var(--accent); }
+nav a[aria-current="page"] { border-bottom-color: var(--accent); }
+.nav-logo { padding-right: .5rem; border-bottom: none; flex-shrink: 0; }
+.nav-logo img { height: 22px; width: auto; object-fit: contain; transform: translateY(-4px); }
+.inner { max-width: var(--max); margin: 0 auto; }
+.page-heading { padding: 3.5rem 1.5rem 3rem; background: var(--bg2); border-bottom: 1px solid var(--border); }
+.eyebrow { color: var(--accent); font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .7rem; }
+h1, h2 { font-family: 'IBM Plex Serif', Georgia, serif; font-weight: 600; line-height: 1.25; }
+h1 { font-size: clamp(2rem, 4vw, 2.75rem); margin-bottom: 1rem; }
+.lead { max-width: 700px; color: var(--muted); font-size: 17px; }
+.omission-note { margin-top: 1.5rem; padding: 1rem 1.25rem; border-left: 3px solid var(--accent); background: var(--bg); color: var(--muted); font-size: 14.5px; overflow-wrap: anywhere; }
+.jump-links { display: flex; flex-wrap: wrap; gap: .4rem 1.5rem; margin-top: 1.4rem; font-size: 14px; }
+section { padding: 3rem 1.5rem; border-bottom: 1px solid var(--border); scroll-margin-top: 72px; }
+h2 { font-size: 1.7rem; margin-bottom: .8rem; }
+.section-intro { max-width: 740px; color: var(--muted); margin-bottom: 1.75rem; }
+#urgent-reviewers { background: var(--accent-light); }
+#area-chairs { background: var(--bg2); }
+.name-list { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 2rem; }
+.name-list li { padding: .45rem 0; font-size: 15px; line-height: 1.6; overflow-wrap: anywhere; break-inside: avoid; }
+.name-list a { color: inherit; text-decoration-color: var(--border); text-decoration-thickness: 1px; }
+.name-list a:hover, .name-list a:focus-visible { color: var(--accent); text-decoration-color: currentColor; }
+#urgent-reviewers .name-list li { color: var(--accent); font-weight: 500; }
+#reviewers .name-list li { border-bottom: 1px solid #efefeb; }
+#area-chairs .name-list li { font-weight: 500; }
+footer { background: #1a1a1a; color: #aaa; padding: 2.5rem 1.5rem; text-align: center; font-size: 13.5px; }
+footer em { display: block; color: #aaa; margin-top: .4rem; font-size: 13px; }
+footer a { color: #ccc; text-decoration: none; }
+footer a:hover { color: #fff; }
+.footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: .5rem 1.5rem; margin-top: 1rem; }
+@media (max-width: 700px) {
+  .name-list { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.5rem; }
+  .page-heading { padding-top: 2.5rem; }
+}
+@media (max-width: 420px) {
+  .name-list { grid-template-columns: 1fr; }
+  section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to acknowledgments</a>
+<nav aria-label="Workshop navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="ODI 2026 home"><img src="assets/odi_logo_abbr_no_tagline_transparent.png" alt="ODI"></a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#topics">Topics &amp; CFP</a>
+    <a href="index.html#speakers">Keynote Speakers</a>
+    <a href="index.html#panel">Panel Discussion</a>
+    <a href="index.html#schedule">Schedule</a>
+    <a href="index.html#dates">Important Dates</a>
+    <a href="index.html#organizers">Organizers</a>
+    <a href="index.html#sponsors">Sponsors</a>
+    <a href="acknowledgments.html" aria-current="page">Acknowledgments</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+<main id="main">
+  <header class="page-heading">
+    <div class="inner">
+      <p class="eyebrow">ODI 2026 · NeurIPS Workshop</p>
+      <h1>Acknowledgments</h1>
+      <p class="lead">We thank the reviewers and area chairs whose time, expertise, and thoughtful feedback helped shape ODI 2026.</p>
+      <p class="omission-note">If you contributed to the review process and your name is missing, please contact the organizers at <a href="mailto:odi.neurips2026@gmail.com">odi.neurips2026@gmail.com</a> so we can update this page.</p>
+      <div class="jump-links" aria-label="On this page">
+        <a href="#urgent-reviewers">Urgent reviewers</a>
+        <a href="#reviewers">All reviewers</a>
+        <a href="#area-chairs">Area chairs</a>
+      </div>
+    </div>
+  </header>
+  <section id="urgent-reviewers" aria-labelledby="urgent-heading">
+    <div class="inner">
+      <h2 id="urgent-heading">Special thanks to our urgent reviewers</h2>
+      <p class="section-intro">We are especially grateful to the following reviewers for stepping in at short notice and providing timely reviews when they were most needed.</p>
+      <ul class="name-list" role="list">
+        <li><a href="https://openreview.net/profile?id=~Alexander_Conzelmann1" target="_blank" rel="noopener noreferrer">Alexander Conzelmann</a></li>
+        <li><a href="https://openreview.net/profile?id=~Berkcan_Kapusuzoglu1" target="_blank" rel="noopener noreferrer">Berkcan Kapusuzoglu</a></li>
+        <li><a href="https://openreview.net/profile?id=~Bingnan_Xiao1" target="_blank" rel="noopener noreferrer">Bingnan Xiao</a></li>
+        <li><a href="https://openreview.net/profile?id=~Felipe_Chaud_Pinheiro1" target="_blank" rel="noopener noreferrer">Felipe Chaud Pinheiro</a></li>
+        <li><a href="https://openreview.net/profile?id=~Kai_Lion1" target="_blank" rel="noopener noreferrer">Kai Lion</a></li>
+        <li><a href="https://openreview.net/profile?id=~Klaus-Rudolf_William_Kladny1" target="_blank" rel="noopener noreferrer">Klaus-Rudolf Kladny</a></li>
+        <li><a href="https://openreview.net/profile?id=~Onno_Eberhard1" target="_blank" rel="noopener noreferrer">Onno Eberhard</a></li>
+        <li><a href="https://openreview.net/profile?id=~Parvel_Gu2" target="_blank" rel="noopener noreferrer">Parvel Gu</a></li>
+        <li><a href="https://openreview.net/profile?id=~Seongchan_Kim2" target="_blank" rel="noopener noreferrer">Seongchan Kim</a></li>
+      </ul>
+    </div>
+  </section>
+  <section id="reviewers" aria-labelledby="reviewers-heading">
+    <div class="inner">
+      <h2 id="reviewers-heading">Thank you to all our reviewers</h2>
+      <p class="section-intro">We thank every reviewer for the time and care they devoted to evaluating submissions and providing constructive feedback to authors, including the urgent reviewers recognized above.</p>
+      <ul class="name-list" role="list">
+        <li><a href="https://openreview.net/profile?id=~Abhishek_Tyagi2" target="_blank" rel="noopener noreferrer">Abhishek Tyagi</a></li>
+        <li><a href="https://openreview.net/profile?id=~Alexander_Conzelmann1" target="_blank" rel="noopener noreferrer">Alexander Conzelmann</a></li>
+        <li><a href="https://openreview.net/profile?id=~Andy_Dimnaku1" target="_blank" rel="noopener noreferrer">Andy Dimnaku</a></li>
+        <li><a href="https://openreview.net/profile?id=~Aymen_Rayane_Khouas1" target="_blank" rel="noopener noreferrer">Aymen Rayane Khouas</a></li>
+        <li><a href="https://openreview.net/profile?id=~Berkcan_Kapusuzoglu1" target="_blank" rel="noopener noreferrer">Berkcan Kapusuzoglu</a></li>
+        <li><a href="https://openreview.net/profile?id=~Bingnan_Xiao1" target="_blank" rel="noopener noreferrer">Bingnan Xiao</a></li>
+        <li><a href="https://openreview.net/profile?id=~Boqian_Wu1" target="_blank" rel="noopener noreferrer">Boqian Wu</a></li>
+        <li><a href="https://openreview.net/profile?id=~Byonghwa_Oh3" target="_blank" rel="noopener noreferrer">Byonghwa Oh</a></li>
+        <li><a href="https://openreview.net/profile?id=~Chanseok_Kang1" target="_blank" rel="noopener noreferrer">Chanseok Kang</a></li>
+        <li><a href="https://openreview.net/profile?id=~Chen-Yu_Yen1" target="_blank" rel="noopener noreferrer">Chen-Yu Yen</a></li>
+        <li><a href="https://openreview.net/profile?id=~Daehyeon_Choi1" target="_blank" rel="noopener noreferrer">Daehyeon Choi</a></li>
+        <li><a href="https://openreview.net/profile?id=~Daniel_Bin_Schmid1" target="_blank" rel="noopener noreferrer">Daniel Bin Schmid</a></li>
+        <li><a href="https://openreview.net/profile?id=~Daniel_Tcheurekdjian1" target="_blank" rel="noopener noreferrer">Daniel Tcheurekdjian</a></li>
+        <li><a href="https://openreview.net/profile?id=~Dong_Wang31" target="_blank" rel="noopener noreferrer">Dong Wang</a></li>
+        <li><a href="https://openreview.net/profile?id=~Edoardo_Mosca1" target="_blank" rel="noopener noreferrer">Edoardo Mosca</a></li>
+        <li><a href="https://openreview.net/profile?id=~Felipe_Chaud_Pinheiro1" target="_blank" rel="noopener noreferrer">Felipe Chaud Pinheiro</a></li>
+        <li><a href="https://openreview.net/profile?id=~Feng_Chen16" target="_blank" rel="noopener noreferrer">Feng Chen</a></li>
+        <li><a href="https://openreview.net/profile?id=~FengTing_Liao1" target="_blank" rel="noopener noreferrer">Feng-Ting Liao</a></li>
+        <li><a href="https://openreview.net/profile?id=~Filippo_Galgani1" target="_blank" rel="noopener noreferrer">Filippo Galgani</a></li>
+        <li><a href="https://openreview.net/profile?id=~Gabriele_Campanella1" target="_blank" rel="noopener noreferrer">Gabriele Campanella</a></li>
+        <li><a href="https://openreview.net/profile?id=~Ganesh_Prasanna_Balakrishnan1" target="_blank" rel="noopener noreferrer">Ganesh Prasanna Balakrishnan</a></li>
+        <li><a href="https://openreview.net/profile?id=~Grant_Collier_Forbes1" target="_blank" rel="noopener noreferrer">Grant Collier Forbes</a></li>
+        <li><a href="https://openreview.net/profile?id=~Gyuwan_Kim1" target="_blank" rel="noopener noreferrer">Gyuwan Kim</a></li>
+        <li><a href="https://openreview.net/profile?id=~Han_Xiao8" target="_blank" rel="noopener noreferrer">Han Xiao</a></li>
+        <li><a href="https://openreview.net/profile?id=~Han-Sang_Lee1" target="_blank" rel="noopener noreferrer">Han-Sang Lee</a></li>
+        <li><a href="https://openreview.net/profile?id=~Harshini_Rajachander1" target="_blank" rel="noopener noreferrer">Harshini Rajachander</a></li>
+        <li><a href="https://openreview.net/profile?id=~Hin_Wai_Lui1" target="_blank" rel="noopener noreferrer">Hin Wai Lui</a></li>
+        <li><a href="https://openreview.net/profile?id=~Hui_Ji3" target="_blank" rel="noopener noreferrer">Hui Ji</a></li>
+        <li><a href="https://openreview.net/profile?id=~Hyun-Jong_Lee1" target="_blank" rel="noopener noreferrer">Hyun-Jong Lee</a></li>
+        <li><a href="https://openreview.net/profile?id=~jindan_li1" target="_blank" rel="noopener noreferrer">Jindan Li</a></li>
+        <li><a href="https://openreview.net/profile?id=~Jingkai_Li1" target="_blank" rel="noopener noreferrer">Jingkai Li</a></li>
+        <li><a href="https://openreview.net/profile?id=~Jingwei_Xiong1" target="_blank" rel="noopener noreferrer">Jingwei Xiong</a></li>
+        <li><a href="https://openreview.net/profile?id=~Jinse_Kwon1" target="_blank" rel="noopener noreferrer">Jinse Kwon</a></li>
+        <li><a href="https://openreview.net/profile?id=~Juhyung_Lee1" target="_blank" rel="noopener noreferrer">Juhyung Lee</a></li>
+        <li><a href="https://openreview.net/profile?id=~JuneYoung_Park3" target="_blank" rel="noopener noreferrer">JuneYoung Park</a></li>
+        <li><a href="https://openreview.net/profile?id=~Kai_Lion1" target="_blank" rel="noopener noreferrer">Kai Lion</a></li>
+        <li><a href="https://openreview.net/profile?id=~Kangqi_Ni1" target="_blank" rel="noopener noreferrer">Kangqi Ni</a></li>
+        <li><a href="https://openreview.net/profile?id=~Karim_Haroun2" target="_blank" rel="noopener noreferrer">Karim Haroun</a></li>
+        <li><a href="https://openreview.net/profile?id=~Ke_Hu9" target="_blank" rel="noopener noreferrer">Ke Hu</a></li>
+        <li><a href="https://openreview.net/profile?id=~Kevin_Li3" target="_blank" rel="noopener noreferrer">Kevin Li</a></li>
+        <li><a href="https://openreview.net/profile?id=~Keyu_Wang1" target="_blank" rel="noopener noreferrer">Keyu Wang</a></li>
+        <li><a href="https://openreview.net/profile?id=~Klaus-Rudolf_William_Kladny1" target="_blank" rel="noopener noreferrer">Klaus-Rudolf Kladny</a></li>
+        <li><a href="https://openreview.net/profile?id=~Krishna_Chaitanya_Balusu1" target="_blank" rel="noopener noreferrer">Krishna Chaitanya Balusu</a></li>
+        <li><a href="https://openreview.net/profile?id=~Kyuho_Lee6" target="_blank" rel="noopener noreferrer">Kyuho Lee</a></li>
+        <li><a href="https://openreview.net/profile?id=~Kyuhong_Shim1" target="_blank" rel="noopener noreferrer">Kyuhong Shim</a></li>
+        <li><a href="https://openreview.net/profile?id=~Laura_Yao1" target="_blank" rel="noopener noreferrer">Laura Yao</a></li>
+        <li><a href="https://openreview.net/profile?id=~Leonidas_Tsigkounakis1" target="_blank" rel="noopener noreferrer">Leonidas Tsigkounakis</a></li>
+        <li><a href="https://openreview.net/profile?id=~Lino_Gerlach1" target="_blank" rel="noopener noreferrer">Lino Gerlach</a></li>
+        <li><a href="https://openreview.net/profile?id=~Maksym_Shamrai1" target="_blank" rel="noopener noreferrer">Maksym Shamrai</a></li>
+        <li><a href="https://openreview.net/profile?id=~Matteo_Spallanzani1" target="_blank" rel="noopener noreferrer">Matteo Spallanzani</a></li>
+        <li><a href="https://openreview.net/profile?id=~Md_Mushfiqur_Rahaman1" target="_blank" rel="noopener noreferrer">Md Mushfiqur Rahaman</a></li>
+        <li><a href="https://openreview.net/profile?id=~Mingyu_Cao2" target="_blank" rel="noopener noreferrer">Mingyu Cao</a></li>
+        <li><a href="https://openreview.net/profile?id=~Minsoo_Cheong1" target="_blank" rel="noopener noreferrer">Minsoo Cheong</a></li>
+        <li><a href="https://openreview.net/profile?id=~Mohammad_Reza_Rezaee1" target="_blank" rel="noopener noreferrer">Mohammad Reza Rezaee</a></li>
+        <li><a href="https://openreview.net/profile?id=~Mufan_Qiu1" target="_blank" rel="noopener noreferrer">Mufan Qiu</a></li>
+        <li><a href="https://openreview.net/profile?id=~Muhammad_Zeeshan_Karamat1" target="_blank" rel="noopener noreferrer">Muhammad Zeeshan Karamat</a></li>
+        <li><a href="https://openreview.net/profile?id=~Mustafa_Ghani1" target="_blank" rel="noopener noreferrer">Mustafa Ghani</a></li>
+        <li><a href="https://openreview.net/profile?id=~Nam_Nguyen7" target="_blank" rel="noopener noreferrer">Nam Nguyen</a></li>
+        <li><a href="https://openreview.net/profile?id=~Naman_Ahuja3" target="_blank" rel="noopener noreferrer">Naman Ahuja</a></li>
+        <li><a href="https://openreview.net/profile?id=~Nikita_Kozodoi1" target="_blank" rel="noopener noreferrer">Nikita Kozodoi</a></li>
+        <li><a href="https://openreview.net/profile?id=~Nishat_Ara_Nipa1" target="_blank" rel="noopener noreferrer">Nishat Ara Nipa</a></li>
+        <li><a href="https://openreview.net/profile?id=~Onno_Eberhard1" target="_blank" rel="noopener noreferrer">Onno Eberhard</a></li>
+        <li><a href="https://openreview.net/profile?id=~Osama_Yousuf1" target="_blank" rel="noopener noreferrer">Osama Yousuf</a></li>
+        <li><a href="https://openreview.net/profile?id=~Parvel_Gu2" target="_blank" rel="noopener noreferrer">Parvel Gu</a></li>
+        <li><a href="https://openreview.net/profile?id=~Rahul_Nittala1" target="_blank" rel="noopener noreferrer">Rahul Nittala</a></li>
+        <li><a href="https://openreview.net/profile?id=~Rajendra_Ugrani1" target="_blank" rel="noopener noreferrer">Rajendra Ugrani</a></li>
+        <li><a href="https://openreview.net/profile?id=~Ruichen_Zhang2" target="_blank" rel="noopener noreferrer">Ruichen Zhang</a></li>
+        <li><a href="https://openreview.net/profile?id=~Ruoyu_Zhao2" target="_blank" rel="noopener noreferrer">Ruoyu Zhao</a></li>
+        <li><a href="https://openreview.net/profile?id=~Sabbir_Ahmed6" target="_blank" rel="noopener noreferrer">Sabbir Ahmed</a></li>
+        <li><a href="https://openreview.net/profile?id=~Santhosh_Kumar_Kasa2" target="_blank" rel="noopener noreferrer">Santhosh Kumar Kasa</a></li>
+        <li><a href="https://openreview.net/profile?id=~Saurabh_Farkya1" target="_blank" rel="noopener noreferrer">Saurabh Farkya</a></li>
+        <li><a href="https://openreview.net/profile?id=~Seongchan_Kim2" target="_blank" rel="noopener noreferrer">Seongchan Kim</a></li>
+        <li><a href="https://openreview.net/profile?id=~Shide_Du1" target="_blank" rel="noopener noreferrer">Shide Du</a></li>
+        <li><a href="https://openreview.net/profile?id=~Shreyan_Bakshi1" target="_blank" rel="noopener noreferrer">Shreyan Bakshi</a></li>
+        <li><a href="https://openreview.net/profile?id=~Shubham_Gupta13" target="_blank" rel="noopener noreferrer">Shubham Gupta</a></li>
+        <li><a href="https://openreview.net/profile?id=~sibendu_paul1" target="_blank" rel="noopener noreferrer">Sibendu Paul</a></li>
+        <li><a href="https://openreview.net/profile?id=~Sicheng_Liu9" target="_blank" rel="noopener noreferrer">Sicheng Liu</a></li>
+        <li><a href="https://openreview.net/profile?id=~Siyu_Zhu8" target="_blank" rel="noopener noreferrer">Siyu Zhu</a></li>
+        <li><a href="https://openreview.net/profile?id=~Snehasis_Banerjee1" target="_blank" rel="noopener noreferrer">Snehasis Banerjee</a></li>
+        <li><a href="https://openreview.net/profile?id=~Soumya_Banerjee3" target="_blank" rel="noopener noreferrer">Soumya Banerjee</a></li>
+        <li><a href="https://openreview.net/profile?id=~Sriram_Gutlapalli1" target="_blank" rel="noopener noreferrer">Sriram Gutlapalli</a></li>
+        <li><a href="https://openreview.net/profile?id=~Steffen_Jung1" target="_blank" rel="noopener noreferrer">Steffen Jung</a></li>
+        <li><a href="https://openreview.net/profile?id=~Taero_Kim2" target="_blank" rel="noopener noreferrer">Taero Kim</a></li>
+        <li><a href="https://openreview.net/profile?id=~Tathagat_Verma1" target="_blank" rel="noopener noreferrer">Tathagat Verma</a></li>
+        <li><a href="https://openreview.net/profile?id=~Tianxiang_Xia1" target="_blank" rel="noopener noreferrer">Tianxiang Xia</a></li>
+        <li><a href="https://openreview.net/profile?id=~Tianyi_Zhang40" target="_blank" rel="noopener noreferrer">Tianyi Zhang</a></li>
+        <li><a href="https://openreview.net/profile?id=~Tom_Jacobs1" target="_blank" rel="noopener noreferrer">Tom Jacobs</a></li>
+        <li><a href="https://openreview.net/profile?id=~Venkata_Gopi_Kolla1" target="_blank" rel="noopener noreferrer">Venkata Gopi Kolla</a></li>
+        <li><a href="https://openreview.net/profile?id=~Victor_Muryn1" target="_blank" rel="noopener noreferrer">Victor Muryn</a></li>
+        <li><a href="https://openreview.net/profile?id=~Juyoung_Yun1" target="_blank" rel="noopener noreferrer">Vincent-Daniel Yun</a></li>
+        <li><a href="https://openreview.net/profile?id=~Wanqi_Yang4" target="_blank" rel="noopener noreferrer">Wanqi Yang</a></li>
+        <li><a href="https://openreview.net/profile?id=~Wenfang_Sun2" target="_blank" rel="noopener noreferrer">Wenfang Sun</a></li>
+        <li><a href="https://openreview.net/profile?id=~Wenjun_Chen7" target="_blank" rel="noopener noreferrer">Wenjun Chen</a></li>
+        <li><a href="https://openreview.net/profile?id=~Xiaolong_Han2" target="_blank" rel="noopener noreferrer">Xiaolong Han</a></li>
+        <li><a href="https://openreview.net/profile?id=~Xiaotian_Yu1" target="_blank" rel="noopener noreferrer">Xiaotian Yu</a></li>
+        <li><a href="https://openreview.net/profile?id=~Xin_Xu13" target="_blank" rel="noopener noreferrer">Xin Xu</a></li>
+        <li><a href="https://openreview.net/profile?id=~Xingyu_Zheng1" target="_blank" rel="noopener noreferrer">Xingyu Zheng</a></li>
+        <li><a href="https://openreview.net/profile?id=~Xinnuo_Li2" target="_blank" rel="noopener noreferrer">Xinnuo Li</a></li>
+        <li><a href="https://openreview.net/profile?id=~Xinyu_Lu2" target="_blank" rel="noopener noreferrer">Xinyu Lu</a></li>
+        <li><a href="https://openreview.net/profile?id=~Xunzhe_Zhou1" target="_blank" rel="noopener noreferrer">Xunzhe Zhou</a></li>
+        <li><a href="https://openreview.net/profile?id=~Yang_Xiao18" target="_blank" rel="noopener noreferrer">Yang Xiao</a></li>
+        <li><a href="https://openreview.net/profile?id=~Yangming_Zhang2" target="_blank" rel="noopener noreferrer">Yangming Zhang</a></li>
+        <li><a href="https://openreview.net/profile?id=~Yen-Kuang_Chen2" target="_blank" rel="noopener noreferrer">Yen-Kuang Chen</a></li>
+        <li><a href="https://openreview.net/profile?id=~Yi_Pan8" target="_blank" rel="noopener noreferrer">Yi Pan</a></li>
+        <li><a href="https://openreview.net/profile?id=~Yilong_Li2" target="_blank" rel="noopener noreferrer">Yilong Li</a></li>
+        <li><a href="https://openreview.net/profile?id=~Yinzhi_Wang2" target="_blank" rel="noopener noreferrer">Yinzhi Wang</a></li>
+        <li><a href="https://openreview.net/profile?id=~Yiyang_Wang3" target="_blank" rel="noopener noreferrer">Yiyang Wang</a></li>
+        <li><a href="https://openreview.net/profile?id=~Yongchang_Hao1" target="_blank" rel="noopener noreferrer">Yongchang Hao</a></li>
+        <li><a href="https://openreview.net/profile?id=~Youngin_Cho1" target="_blank" rel="noopener noreferrer">Youngin Cho</a></li>
+        <li><a href="https://openreview.net/profile?id=~Yu-Chao_Huang1" target="_blank" rel="noopener noreferrer">Yu-Chao Huang</a></li>
+        <li><a href="https://openreview.net/profile?id=~Yuhang_Chen4" target="_blank" rel="noopener noreferrer">Yuhang Chen</a></li>
+        <li><a href="https://openreview.net/profile?id=~Zhaoyue_Wang1" target="_blank" rel="noopener noreferrer">Zhaoyue Wang</a></li>
+        <li><a href="https://openreview.net/profile?id=~Zhicheng_Du1" target="_blank" rel="noopener noreferrer">Zhicheng Du</a></li>
+        <li><a href="https://openreview.net/profile?id=~Zhiqin_Brian_Yang1" target="_blank" rel="noopener noreferrer">Zhiqin Yang</a></li>
+        <li><a href="https://openreview.net/profile?id=~Zhongqiang_Zhang5" target="_blank" rel="noopener noreferrer">Zhongqiang Zhang</a></li>
+        <li><a href="https://openreview.net/profile?id=~Zhuwei_Qin1" target="_blank" rel="noopener noreferrer">Zhuwei Qin</a></li>
+        <li><a href="https://openreview.net/profile?id=~Zijie_Liu2" target="_blank" rel="noopener noreferrer">Zijie Liu</a></li>
+      </ul>
+    </div>
+  </section>
+  <section id="area-chairs" aria-labelledby="chairs-heading">
+    <div class="inner">
+      <h2 id="chairs-heading">Thank you to our area chairs</h2>
+      <p class="section-intro">We thank our area chairs for guiding the review process, weighing reviewers’ feedback, and preparing thoughtful meta-reviews.</p>
+      <ul class="name-list" role="list">
+        <li><a href="https://openreview.net/profile?id=~Bingcong_Li1" target="_blank" rel="noopener noreferrer">Bingcong Li</a></li>
+        <li><a href="https://openreview.net/profile?id=~Gyuwan_Kim1" target="_blank" rel="noopener noreferrer">Gyuwan Kim</a></li>
+        <li><a href="https://openreview.net/profile?id=~Hao_Ma6" target="_blank" rel="noopener noreferrer">Hao Ma</a></li>
+        <li><a href="https://openreview.net/profile?id=~Juhyung_Lee1" target="_blank" rel="noopener noreferrer">Juhyung Lee</a></li>
+        <li><a href="https://openreview.net/profile?id=~Kyuhong_Shim1" target="_blank" rel="noopener noreferrer">Kyuhong Shim</a></li>
+        <li><a href="https://openreview.net/profile?id=~Marko_Zaric1" target="_blank" rel="noopener noreferrer">Marko Zaric</a></li>
+        <li><a href="https://openreview.net/profile?id=~Michael_Muehlebach1" target="_blank" rel="noopener noreferrer">Michael Muehlebach</a></li>
+        <li><a href="https://openreview.net/profile?id=~Mo_Shahdloo2" target="_blank" rel="noopener noreferrer">Mo Shahdloo</a></li>
+        <li><a href="https://openreview.net/profile?id=~Shiwei_Liu2" target="_blank" rel="noopener noreferrer">Shiwei Liu</a></li>
+        <li><a href="https://openreview.net/profile?id=~Snehasis_Banerjee1" target="_blank" rel="noopener noreferrer">Snehasis Banerjee</a></li>
+        <li><a href="https://openreview.net/profile?id=~Song_Wang6" target="_blank" rel="noopener noreferrer">Song Wang</a></li>
+        <li><a href="https://openreview.net/profile?id=~Steffen_Jung1" target="_blank" rel="noopener noreferrer">Steffen Jung</a></li>
+        <li><a href="https://openreview.net/profile?id=~Xiaotian_Yu1" target="_blank" rel="noopener noreferrer">Xiaotian Yu</a></li>
+        <li><a href="https://openreview.net/profile?id=~Yilong_Li2" target="_blank" rel="noopener noreferrer">Yilong Li</a></li>
+        <li><a href="https://openreview.net/profile?id=~Zhuwei_Qin1" target="_blank" rel="noopener noreferrer">Zhuwei Qin</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="inner">
+    <div>NeurIPS 2026 Workshop &mdash; On-Device Intelligence: Foundation Models under Real-World Constraints</div>
+    <em>Beyond the cloud, into the world.</em>
+    <div class="footer-links">
+      <a href="index.html">Back to the workshop</a>
+      <a href="mailto:odi.neurips2026@gmail.com">Contact the organizers</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

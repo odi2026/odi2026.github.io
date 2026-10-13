@@ -2,6 +2,23 @@
 
 > **Beyond the cloud, into the world.**
 
+## Current local preview
+
+The current `index.html` loads the Markdown content in the browser. Serve this
+directory with `python3 -m http.server 8765 --bind 127.0.0.1`, then open
+`http://127.0.0.1:8765/`.
+
+`acknowledgments.html` is a separate, static page linked from the homepage
+navigation and footer. Its three name lists can be edited directly in that file.
+Names appear alphabetically by given name; urgent reviewers also appear in the
+full reviewer list. Each name links to that person's verified OpenReview profile
+in a new tab. Preserve the exact profile ID when editing names; IDs may differ
+from the displayed name.
+
+The `build.py` instructions below describe the older generator. Do not run it
+for the current preview: it would overwrite the current homepage with the older
+layout.
+
 ## Editing content
 
 All editable content lives in the `content/` folder. Each file is a Markdown file with a YAML frontmatter block (between the `---` lines) and, for prose sections, a Markdown body below.
