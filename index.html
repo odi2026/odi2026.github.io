@@ -22,9 +22,8 @@ body { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 16px; lin
 
 /* NAV */
 nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: 0 1.5rem; }
-.nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; height: 52px; overflow-x: auto; -ms-overflow-style: none; scrollbar-width: none; }
-.nav-inner::-webkit-scrollbar { display: none; }
-nav a { font-size: 13.5px; font-weight: 500; color: var(--muted); text-decoration: none; white-space: nowrap; padding: 0 .75rem; height: 52px; display: flex; align-items: center; border-bottom: 2px solid transparent; transition: color .15s, border-color .15s; }
+.nav-inner { max-width: var(--max); margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 0 .15rem; min-height: 52px; padding: .25rem 0; }
+nav a { flex: 0 0 auto; font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; white-space: nowrap; padding: 0 .45rem; height: 44px; display: flex; align-items: center; border-bottom: 2px solid transparent; transition: color .15s, border-color .15s; }
 nav a:first-child { padding-left: 0; }
 nav a:hover { color: var(--accent); }
 nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
@@ -48,7 +47,7 @@ nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
 .btn-outline:hover { background: var(--accent-light); }
 
 /* SECTIONS */
-section { padding: 4.5rem 1.5rem; border-bottom: 1px solid var(--border); scroll-margin-top: 52px; }
+section { padding: 4.5rem 1.5rem; border-bottom: 1px solid var(--border); scroll-margin-top: calc(var(--nav-height, 52px) + 16px); }
 section:last-of-type { border-bottom: none; }
 .section-inner { max-width: var(--max); margin: 0 auto; }
 section h2 { font-family: 'IBM Plex Serif', serif; font-size: 1.7rem; font-weight: 600; color: var(--text); margin-bottom: 1.5rem; }
@@ -60,7 +59,7 @@ section li { margin-bottom: .3rem; }
 section strong { color: var(--text); }
 section em { font-style: italic; }
 section a { color: var(--link); }
-#about, #speakers, #panel, #submit, #organizers, #contact { background: var(--bg); }
+#about, #speakers, #panel, #posters, #submit, #organizers, #contact { background: var(--bg); }
 #schedule, #topics, #dates, #sponsors { background: var(--bg2); }
 
 /* SCHEDULE */
@@ -86,6 +85,21 @@ section a { color: var(--link); }
 .talk-abstract[open] .abstract-hide { display: inline; }
 .talk-abstract-copy { margin-top: .75rem; padding: 1rem; background: var(--bg); border-left: 2px solid var(--accent); border-radius: 6px; }
 .talk-abstract-copy p { font-size: 14px; line-height: 1.75; overflow-wrap: anywhere; }
+
+/* POSTER INFORMATION */
+.poster-overview { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding: 1.5rem 0; margin: 1.5rem 0 2rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.poster-overview h3 { font-size: 11.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: .65rem; }
+.poster-size { font-family: 'IBM Plex Serif', serif; font-size: clamp(1.6rem, 4vw, 2rem); font-weight: 600; line-height: 1.3; color: var(--text); margin-bottom: .4rem; }
+.poster-size span { font-family: 'IBM Plex Sans', sans-serif; font-size: .85rem; font-weight: 400; color: var(--muted); }
+.poster-overview p { font-size: 14px; margin-bottom: 0; }
+.poster-session-list { list-style: none; padding: 0; margin: 0 0 .5rem; }
+.poster-session-list li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .15rem 1rem; font-size: 14px; }
+.poster-session-list strong { font-weight: 500; white-space: nowrap; }
+.poster-details { max-width: 740px; font-size: 15px; }
+.poster-details h3 { font-family: 'IBM Plex Serif', serif; font-size: 1.15rem; margin: 1.6rem 0 .6rem; }
+.poster-details h3:first-child { margin-top: 0; }
+.poster-details a { text-underline-offset: 3px; }
+.poster-schedule-link { margin-top: 1rem; font-size: 14px; }
 
 /* SPEAKERS / ORGANIZERS */
 .speakers-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap: 2rem; margin-top: .5rem; }
@@ -189,6 +203,7 @@ footer a:hover { color: #fff; }
   #hero { background-position: 44% 92%; }
   .hero-meta-sep { display: none; }
   .schedule-cols { grid-template-columns: 1fr; }
+  .poster-overview { grid-template-columns: 1fr; gap: 1.5rem; }
   .sched-time { min-width: 84px; font-size: 11.5px; }
   .speakers-grid { grid-template-columns: repeat(2,1fr); }
 }
@@ -217,7 +232,7 @@ function parseMd(raw) {
 }
 
 async function load(file) {
-  const r = await fetch('content/' + file + '?v=20261012-tianyi-talk-v1', { cache: 'no-store' });
+  const r = await fetch('content/' + file + '?v=20261020-posters-v1', { cache: 'no-store' });
   if (!r.ok) throw new Error('Cannot load ' + file);
   return parseMd(await r.text());
 }
@@ -294,6 +309,32 @@ function renderSchedule(fm) {
     ${description}
     <div class="schedule-list">${items.map(row).join('')}</div>
     ${note}
+    <p class="poster-schedule-link"><a href="#posters">Poster preparation and printing information &rarr;</a></p>
+  </div>
+</section>`;
+}
+
+function renderPosters(fm, body, schedule) {
+  const sessions = [...(schedule.morning || []), ...(schedule.afternoon || [])]
+    .filter(item => /^Poster Session\b/.test(item.label || ''));
+  return `
+<section id="posters" aria-labelledby="posters-title">
+  <div class="section-inner">
+    <h2 id="posters-title">${e(fm.title)}</h2>
+    <p class="section-lead">${e(fm.description)}</p>
+    <div class="poster-overview">
+      <div>
+        <h3>Poster format</h3>
+        <div class="poster-size">${e(fm.width)} <span>(W)</span> &times; ${e(fm.height)} <span>(H)</span></div>
+        <p><strong>${e(fm.orientation)}</strong> &middot; Maximum printed size</p>
+      </div>
+      <div>
+        <h3>Poster sessions</h3>
+        <ul class="poster-session-list">${sessions.map(item => `<li><span>${e(item.label)}</span><strong>${e(item.time)}</strong></li>`).join('')}</ul>
+        <p>${e(fm.timezone)}</p>
+      </div>
+    </div>
+    <div class="poster-details">${marked.parse(body)}</div>
   </div>
 </section>`;
 }
@@ -549,15 +590,23 @@ function initBioToggles() {
 
 // ── nav active on scroll ───────────────────────────────────────────────────
 function initNav() {
+  const nav      = document.querySelector('nav');
   const sections = Array.from(document.querySelectorAll('section[id]'));
   const links    = document.querySelectorAll('nav a');
+  let navHeight  = nav.getBoundingClientRect().height;
   function update() {
     let cur = '';
-    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - navHeight - 24) cur = s.id; });
     links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
   }
+  function syncHeight() {
+    navHeight = Math.ceil(nav.getBoundingClientRect().height);
+    document.documentElement.style.setProperty('--nav-height', navHeight + 'px');
+    update();
+  }
   window.addEventListener('scroll', update, { passive: true });
-  update();
+  new ResizeObserver(syncHeight).observe(nav);
+  syncHeight();
 }
 
 // ── main ───────────────────────────────────────────────────────────────────
@@ -569,6 +618,7 @@ async function main() {
     ['speakers.md',   null],
     ['panel.md',      null],
     ['schedule.md',   null],
+    ['posters.md',    null],
     ['dates.md',      null],
     ['organizers.md', null],
     ['sponsors.md',   null],
@@ -577,7 +627,7 @@ async function main() {
 
   const loaded = await Promise.all(files.map(([f]) => load(f)));
 
-  const [hero, about, topics, speakers, panel, schedule, dates, organizers, sponsors, contact] = loaded;
+  const [hero, about, topics, speakers, panel, schedule, posters, dates, organizers, sponsors, contact] = loaded;
 
   // Build nav
   const logoHtml = (hero.fm.nav_logo || hero.fm.logo)
@@ -585,11 +635,12 @@ async function main() {
     : '';
   document.getElementById('nav-links').innerHTML = logoHtml + `
     <a href="#about">About</a>
-    <a href="#topics">Topics & CFP</a>
-    <a href="#speakers">Keynote Speakers</a>
-    <a href="#panel">Panel Discussion</a>
+    <a href="#topics">CFP</a>
+    <a href="#speakers">Speakers</a>
+    <a href="#panel">Panel</a>
     <a href="#schedule">Schedule</a>
-    <a href="#dates">Important Dates</a>
+    <a href="#posters">Posters</a>
+    <a href="#dates">Dates</a>
     <a href="#organizers">Organizers</a>
     <a href="#sponsors">Sponsors</a>
     <a href="acknowledgments.html">Acknowledgments</a>
@@ -603,6 +654,7 @@ async function main() {
     renderSpeakers(speakers.fm),
     renderPanel(panel.fm),
     renderSchedule(schedule.fm),
+    renderPosters(posters.fm, posters.body, schedule.fm),
     renderDates(dates.fm),
     renderOrganizers(organizers.fm),
     renderSponsors(sponsors.fm),

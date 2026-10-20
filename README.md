@@ -5,8 +5,8 @@
 ## Current local preview
 
 The current `index.html` loads the Markdown content in the browser. Serve this
-directory with `python3 -m http.server 8765 --bind 127.0.0.1`, then open
-`http://127.0.0.1:8765/`.
+directory with `python3 -m http.server 8766 --bind 127.0.0.1`, then open
+`http://127.0.0.1:8766/`. The poster information is at `/#posters`.
 
 `acknowledgments.html` is a separate, static page linked from the homepage
 navigation and footer. Its three name lists can be edited directly in that file.
@@ -28,6 +28,7 @@ All editable content lives in the `content/` folder. Each file is a Markdown fil
 | `content/hero.md` | Title, subtitle, venue, date, CTA buttons |
 | `content/about.md` | Workshop description (free Markdown prose) |
 | `content/schedule.md` | Morning / afternoon schedule rows |
+| `content/posters.md` | Poster dimensions, display, printing, and digital upload guidance; session times come from `schedule.md` |
 | `content/speakers.md` | Keynote speaker cards |
 | `content/topics.md` | Research topic list |
 | `content/submit.md` | Call for papers text + evaluation criteria |

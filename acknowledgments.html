@@ -21,9 +21,8 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .skip-link { position: absolute; left: 1rem; top: -100px; z-index: 100; padding: .5rem 1rem; background: white; }
 .skip-link:focus { top: .5rem; }
 nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: 0 1.5rem; }
-.nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; height: 52px; overflow-x: auto; scrollbar-width: none; }
-.nav-inner::-webkit-scrollbar { display: none; }
-nav a { font-size: 13.5px; font-weight: 500; color: var(--muted); text-decoration: none; white-space: nowrap; padding: 0 .75rem; height: 52px; display: flex; align-items: center; border-bottom: 2px solid transparent; }
+.nav-inner { max-width: var(--max); margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 0 .15rem; min-height: 52px; padding: .25rem 0; }
+nav a { flex: 0 0 auto; font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; white-space: nowrap; padding: 0 .45rem; height: 44px; display: flex; align-items: center; border-bottom: 2px solid transparent; }
 nav a:first-child { padding-left: 0; }
 nav a:hover, nav a[aria-current="page"] { color: var(--accent); }
 nav a[aria-current="page"] { border-bottom-color: var(--accent); }
@@ -37,7 +36,7 @@ h1 { font-size: clamp(2rem, 4vw, 2.75rem); margin-bottom: 1rem; }
 .lead { max-width: 700px; color: var(--muted); font-size: 17px; }
 .omission-note { margin-top: 1.5rem; padding: 1rem 1.25rem; border-left: 3px solid var(--accent); background: var(--bg); color: var(--muted); font-size: 14.5px; overflow-wrap: anywhere; }
 .jump-links { display: flex; flex-wrap: wrap; gap: .4rem 1.5rem; margin-top: 1.4rem; font-size: 14px; }
-section { padding: 3rem 1.5rem; border-bottom: 1px solid var(--border); scroll-margin-top: 72px; }
+section { padding: 3rem 1.5rem; border-bottom: 1px solid var(--border); scroll-margin-top: calc(var(--nav-height, 52px) + 16px); }
 h2 { font-size: 1.7rem; margin-bottom: .8rem; }
 .section-intro { max-width: 740px; color: var(--muted); margin-bottom: 1.75rem; }
 #urgent-reviewers { background: var(--accent-light); }
@@ -71,11 +70,12 @@ footer a:hover { color: #fff; }
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="ODI 2026 home"><img src="assets/odi_logo_abbr_no_tagline_transparent.png" alt="ODI"></a>
     <a href="index.html#about">About</a>
-    <a href="index.html#topics">Topics &amp; CFP</a>
-    <a href="index.html#speakers">Keynote Speakers</a>
-    <a href="index.html#panel">Panel Discussion</a>
+    <a href="index.html#topics">CFP</a>
+    <a href="index.html#speakers">Speakers</a>
+    <a href="index.html#panel">Panel</a>
     <a href="index.html#schedule">Schedule</a>
-    <a href="index.html#dates">Important Dates</a>
+    <a href="index.html#posters">Posters</a>
+    <a href="index.html#dates">Dates</a>
     <a href="index.html#organizers">Organizers</a>
     <a href="index.html#sponsors">Sponsors</a>
     <a href="acknowledgments.html" aria-current="page">Acknowledgments</a>
@@ -272,5 +272,13 @@ footer a:hover { color: #fff; }
     </div>
   </div>
 </footer>
+<script>
+const workshopNav = document.querySelector('nav');
+function syncNavHeight() {
+  document.documentElement.style.setProperty('--nav-height', Math.ceil(workshopNav.getBoundingClientRect().height) + 'px');
+}
+new ResizeObserver(syncNavHeight).observe(workshopNav);
+syncNavHeight();
+</script>
 </body>
 </html>
