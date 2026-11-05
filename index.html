@@ -237,7 +237,7 @@ function parseMd(raw) {
 }
 
 async function load(file) {
-  const r = await fetch('content/' + file + '?v=20261029-macpaw-v1', { cache: 'no-store' });
+  const r = await fetch('content/' + file + '?v=20261105-aishwarya-v1', { cache: 'no-store' });
   if (!r.ok) throw new Error('Cannot load ' + file);
   return parseMd(await r.text());
 }

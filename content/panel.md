@@ -31,10 +31,10 @@ panelists:
 
   - name: "Aishwarya Kamath"
     role: "Panelist"
-    affiliation: "Google, Gemma 4 On-Device Integrations"
+    affiliation: "Research Scientist, Google DeepMind"
     photo: "assets/speakers/aishwarya_kamath.jpeg"
     bio: |
-      Aishwarya Kamath is a Research Scientist at Google, where she works on the Gemma project. Her research interests include multimodal understanding, vision-language models, and efficient model design for on-device deployment. She has contributed to several advances in grounded language understanding and open-weight foundation models.
+      Aishwarya is a Staff Research Scientist at Google DeepMind, where she is part of the Gemini team. Her research interests include multimodal understanding, vision-language models, and efficient model design for on-device deployment. She has contributed to several advances in grounded language understanding and open-weight foundation models.
 
   - name: "Yanchao Yang"
     role: "Panelist"
