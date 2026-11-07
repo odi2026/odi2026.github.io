@@ -237,7 +237,7 @@ function parseMd(raw) {
 }
 
 async function load(file) {
-  const r = await fetch('content/' + file + '?v=20261105-aishwarya-v1', { cache: 'no-store' });
+  const r = await fetch('content/' + file + '?v=20261107-futurewei-v1', { cache: 'no-store' });
   if (!r.ok) throw new Error('Cannot load ' + file);
   return parseMd(await r.text());
 }
@@ -544,7 +544,7 @@ function renderSponsors(fm) {
       <a class="sponsor-logo" href="${e(s.url)}" target="_blank" rel="noopener">
         <img src="${e(s.logo)}" alt="${e(s.name)}" width="${e(s.logo_width)}" height="${e(s.logo_height)}" loading="lazy">
       </a>
-      <p class="sponsor-description">${e(s.description)}</p>
+      ${String(s.description || '').trim().split(/\n\s*\n/).filter(Boolean).map(p => `<p class="sponsor-description">${e(p.trim())}</p>`).join('')}
       <a class="sponsor-link" href="${e(s.url)}" target="_blank" rel="noopener">${e(s.website_label || s.name)}</a>
     </article>`);
   return `
