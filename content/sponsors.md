@@ -26,7 +26,7 @@ sponsors:
 
       We are actively engaged in open innovation through participation in open-source communities and cultivating an open ecosystem that drives shared success. Our efforts to promote and innovate within open ecosystems include developing open app platforms for ICT systems. These initiatives are part of our ongoing commitment towards enabling an open and collaborative ICT industry.
   - name: "TranscEngram"
-    tier: "Lead Sponsor"
+    tier: "Lead Community Partner"
     url: "https://www.transcengram.com/"
     website_label: "transcengram.com"
     logo: "assets/sponsors/transcengram.png"
