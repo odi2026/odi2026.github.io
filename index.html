@@ -246,7 +246,7 @@ function parseMd(raw) {
 }
 
 async function load(file) {
-  const r = await fetch('content/' + file + '?v=20261110-asher-panel-v1', { cache: 'no-store' });
+  const r = await fetch('content/' + file + '?v=20261110-transcengram-v1', { cache: 'no-store' });
   if (!r.ok) throw new Error('Cannot load ' + file);
   return parseMd(await r.text());
 }
@@ -548,7 +548,7 @@ function renderOrganizers(fm) {
 
 function renderSponsors(fm) {
   const cards = (fm.sponsors||[]).map(s => `
-    <article class="sponsor-card${s.tier === 'Lead Community Partner' ? ' sponsor-card--lead' : ''}" aria-label="${e(s.name)}">
+    <article class="sponsor-card${['Lead Community Partner', 'Lead Sponsor'].includes(s.tier) ? ' sponsor-card--lead' : ''}" aria-label="${e(s.name)}">
       <h3 class="sponsor-tier">${e(s.tier)}</h3>
       <a class="sponsor-logo" href="${e(s.url)}" target="_blank" rel="noopener">
         <img src="${e(s.logo)}" alt="${e(s.name)}" width="${e(s.logo_width)}" height="${e(s.logo_height)}" loading="lazy">

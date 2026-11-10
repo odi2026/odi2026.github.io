@@ -25,6 +25,14 @@ sponsors:
       Futurewei experts have been actively engaged in standard programs for more than two decades. Futurewei continues to contribute in next generation ICT standards including wireless and networks.
 
       We are actively engaged in open innovation through participation in open-source communities and cultivating an open ecosystem that drives shared success. Our efforts to promote and innovate within open ecosystems include developing open app platforms for ICT systems. These initiatives are part of our ongoing commitment towards enabling an open and collaborative ICT industry.
+  - name: "TranscEngram"
+    tier: "Lead Sponsor"
+    url: "https://www.transcengram.com/"
+    website_label: "transcengram.com"
+    logo: "assets/sponsors/transcengram.png"
+    logo_width: 6191
+    logo_height: 1878
+    description: "TranscEngram is dedicated to forging a new learning paradigm for next-generation Physical AI autonomous intelligence. Grounded in the first principles of intelligence, TranscEngram strives to build autonomous intelligence systems with a complete closed loop of Perception–Prediction–Interaction. Transcending the limits of human memory, we endow machines with a self-correcting autonomous learning capability; oriented toward the open, real physical world, we enable them to autonomously construct and continuously evolve World Physical Models and Physical Interaction Models. We are explorers of embodied intelligence: providing a revolutionary autonomous intelligence foundation for the next generation of the intelligent robotics industry."
   - name: "Liquid AI"
     tier: "Gold Sponsor"
     url: "https://www.liquid.ai/"
