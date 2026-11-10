@@ -13,13 +13,12 @@ panelists:
     bio: |
       Yi Ma is a Professor at the University of Hong Kong and UC Berkeley. His research spans computer vision, high-dimensional data analysis, and deep learning theory. He is known for foundational contributions to 3D reconstruction, robust PCA, and sparse representation. He recently leads efforts on learning compact and structured representations for efficient and interpretable AI systems.
 
-  - name: "Alexander Amini"
+  - name: "Asher Labovich"
     role: "Panelist"
-    affiliation: "Liquid AI · Co-Founder & Chief Science Officer"
-    url: "https://www.mit.edu/~amini/"
-    photo: "assets/speakers/alexander_amini.jpg"
+    affiliation: "Research Engineer, Liquid AI"
+    photo: "assets/speakers/asher_labovich.jpeg"
     bio: |
-      Alexander Amini is the Co-Founder and Chief Science Officer of Liquid AI and a Research Affiliate at MIT. His research focuses on deep learning, robotics, and safe decision-making for autonomous systems.
+      Asher is a research engineer at Liquid AI. His work focuses on understanding the inductive biases of language model architectures and building high-quality models that run on RAM-constrained machines.
 
   - name: "Pavlo Molchanov"
     role: "Panelist"
